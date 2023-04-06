@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProfileHeader from "../components/ProfileHeader";
 import {FaPencilAlt } from "react-icons/fa";
-import {useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut, } from "firebase/auth";
 import {auth,} from '../fbase'
 import Edit from "../components/Edit";
@@ -11,11 +11,6 @@ import "../styles/MyProfile.scss";
 function MyProfile({userObj}) {
   console.log(userObj);
   const navigate = useNavigate();
-  const [editing, setEditing] = useState(false);
-  
-  const EditClick = () => {
-    setEditing(true);
-  };
 
   const onLogOutClick = () => {
     signOut(auth);
@@ -46,18 +41,16 @@ function MyProfile({userObj}) {
               className="profile_email"
               placeholder="Userid@gmail.com"
             />
-        {editing ? (
-        <Edit userObj={userObj} />
-      ) : (
+            <Link to="/Edit" userObj={userObj}>
             <ul className="profile_menu">
-              <li onClick={EditClick}>
+              <li>
                 <span className="icon">
                   <FaPencilAlt />
                 </span>
                 Edit Profile
               </li>
             </ul>
-        )}
+            </Link>
           </div>
         </section>
 

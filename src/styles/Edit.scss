@@ -1,1 +1,81 @@
 @import 'common.scss';
+
+.profile_wrap{
+
+ width: 100%; height: 100%;
+
+  Header {
+    background: transparent;
+  }
+  
+  
+  .title_bar > .left_item > a {
+    opacity: 1;
+    font-size: 20px;
+  }
+  
+  .profile_main {
+    height: calc(100% - 10px);
+  }
+  
+  .background {
+    width: 100%;
+    height: 65%;
+    // background: url(../images/bg_default.png) no-repeat 0 0;
+    // background-size: cover;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .profile {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  
+  .Profile_profile_img {
+    position: absolute;
+    left: 50%;
+    top: -65px;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px tomato;
+    }
+  }
+
+.Edit_container{
+
+    .profileName{
+        display: block;
+        position: relative;
+        bottom:-60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        border-radius: 10px;
+        padding: 3px 0;
+        outline: 1px solid tomato;
+        border: none;
+        text-align: center;
+    }
+    .submit_name{border: none;
+      
+    }
+    .submit_image{border: none;
+
+    }
+    .select{
+      position: absolute;
+      width: 30px;
+    }
+}
+ 
+}

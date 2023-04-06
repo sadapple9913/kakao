@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { updateProfile } from "firebase/auth";
-import { storage} from '../fbase'
+import {db, storage} from '../fbase'
 import { getDownloadURL, ref, uploadString}  from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import "../styles/Edit.scss";
-import MyProfile from "../routes/MyProfile";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import ProfileHeader from "./ProfileHeader";
+import "../styles/Edit.scss";
 
 
 function Edit({userObj}) {
 const [newDisplayName , setNewDisplayName] = useState(userObj.displayName);
 console.log(userObj);
+const [talks, setTalks] = useState([]);
 const[attachment ,setAttachment ] = useState("");
 // const [goBack, setGoBack] = useState(false);
 
@@ -25,7 +27,6 @@ const[attachment ,setAttachment ] = useState("");
     console.log(value)
     }
   
-  
    const onSubmit = async (e) => {
   e.preventDefault();
   try {
@@ -37,15 +38,17 @@ const[attachment ,setAttachment ] = useState("");
     }
     await updateProfile(userObj, {
       displayName: newDisplayName,
-      photoURL: attachmentUrl !== "" ? attachmentUrl : userObj.photoURL,
+      photoURL: attachmentUrl /* !== "" ? attachmentUrl : userObj.photoURL, */
     });
   } catch (e) {
     console.error("Error updating profile: ", e);
   }
-  setAttachment("");
+  setAttachment(userObj.photoURL);
 };
 
+
   const onFileChange = (e) =>{
+    e.preventDefault();
     console.log('e->',e);
     const {target:{files}} = e;
   
@@ -61,7 +64,8 @@ const[attachment ,setAttachment ] = useState("");
     reader.readAsDataURL(theFile); //theFile이라는 값을 U RL로 읽어서 보이게 한다
   }
   
-  const onClearAttachment = () =>{
+  const onClearAttachment = (e) =>{
+    e.preventDefault();
     setAttachment("");
   }
   
@@ -69,28 +73,43 @@ const[attachment ,setAttachment ] = useState("");
   console.log("newDisplayName ", newDisplayName )
   
   return (
-    
-    <>
-    
+    <div className="profile_wrap">
+    <ProfileHeader />
 
-    
-    <form onSubmit={onSubmit} className="container">  
-    <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder="Display Name"/>
-    <input className="submit" type="submit" value="이름" />
-    <input className="submit" type="submit" value="올리기" />
-    <input className="file" type='file' accept='image/*' onChange={onFileChange} />
-    {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
-      <div>
-        <img src={attachment} width="50" height="50" alt='' />
-        <button className="remove" onClick={onClearAttachment}>x</button>
-      </div>
-    )}
-  </form> 
- 
-  {/* <button onClick={goBackClick}>돌아가기</button>
- */}
+    <div className="profile_main">
+      <section className="background">
+        <h2 className="blind">My profile background image</h2>
+        <img src={userObj.photoURL} alt="Profile image" />
+      </section>
 
-  </>
+        <section className="profile">
+          <h2 className="blind">My profile info</h2>
+          <div className="Profile_profile_img empty">
+            <img src={userObj.photoURL} alt="Profile image" />
+            <images />
+          </div>
+          </section>
+          <form onSubmit={onSubmit} className="Edit_container">  
+            <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder="Display Name"/>
+            <input className="submit_name" type="submit" value="이름" />
+            <input className="submit_image" type="submit" value="올리기" />
+            <label className="select" htmlFor="attach-file">
+            <input className="file" type='file' accept='image/*' onChange={onFileChange} style={{opacity:0}}  id="attach-file"/>
+            </label>
+            {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+              <div>
+                <img src={attachment} width="50" height="50" alt='' />
+                <button className="remove" onClick={onClearAttachment}>x</button>
+              </div>
+            )}
+          </form> 
+
+
+
+    </div>
+  </div>
+
+
   )
 }
 
