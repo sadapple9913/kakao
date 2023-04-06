@@ -84,7 +84,7 @@ function Auth() {
           또는
         </div>
         <button onClick={onSocialClick} name="Google">
-          Google 로그인
+          Google 로그인~
         </button>
       </div>
     </div>
