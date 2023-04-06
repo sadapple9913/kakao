@@ -72,6 +72,8 @@ const[attachment ,setAttachment ] = useState("");
     
     <>
     
+
+    
     <form onSubmit={onSubmit} className="container">  
     <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder="Display Name"/>
     <input className="submit" type="submit" value="이름" />

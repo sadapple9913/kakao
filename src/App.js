@@ -37,7 +37,7 @@ function App() {
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route exact path="/" element={<Friends userObj={userObj}   />} />
+            <Route exact path="/" element={<Friends userObj={userObj} />} />
           </>
         ) : (
           <Route exact path="/" element={<Auth />} />
