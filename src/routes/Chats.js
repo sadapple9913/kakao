@@ -44,7 +44,7 @@ function Chats() {
         {/* search_box */}
         <form className="search_box">
           <fieldset className="search_inner">
-            <legend className="blind">검색창123123123</legend>
+            <legend className="blind">검색창</legend>
             <FaSistrix />
             <input
               type="search"
