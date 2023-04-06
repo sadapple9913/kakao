@@ -7,21 +7,17 @@ import Profile from './Profile'
 import My from '../components/My';
 
 import '../styles/More.scss'
+import { Link } from 'react-router-dom';
 
 
-function More() {
+function More({userObj , images}) {
   return (
     <div className='more_wrap'>
     <Header />
     <div className='main'>
     <section className="user_info">
       <h2 className="blind">사용자 정보</h2>
-      {profiles.slice(0, 1).map((profile) => (
-                    <My
-                    images={profile.images} 
-                    name={profile.name} 
-                    />
-                  ))}
+        <My userObj={userObj} />
       <span className="profile_email">Userid@gmail.com</span>
       <span className="chat_img"><a href="#"><FaRegComment /></a></span>
     </section>

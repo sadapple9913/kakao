@@ -5,7 +5,7 @@ import Tab from '../components/Tab';
 
 import '../styles/Find.scss'
 
-function App() {
+function Find() {
   return (
     <div className='find_wrap'>
       <Header />
@@ -30,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default Find;

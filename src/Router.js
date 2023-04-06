@@ -1,28 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import Home from "./routers/Home";
-import Profiles from "./routers/Profiles";
-import Auth from "./components/Auth";
+import Auth from "./routes/Auth";
+import Friends from "./routes/Friends";
 
-function AppRouter({ isLoggedIn,userObj }) {
-
-
-
-  console.log({userObj})
-  ;
+function AppRouter({ isLoggedIn }) {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+        
       <Routes>
-        {isLoggedIn ? (
-          <>
-            <Route exact path="/" element={<Home userObj={userObj} />} />
-            <Route esact path="/Profiles" element={<Profiles />} />
-          </>
-        ) : (
-          <Route exact path="/" element={<Auth />} />
-        )}
+      {!isLoggedIn && <Route exact path="/" element={<Auth />} />}
       </Routes>
     </Router>
   );

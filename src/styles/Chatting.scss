@@ -77,21 +77,34 @@
     .chat {
       background: #ffe73a;
     }
-  
     .chat_time {
       position: absolute;
-      left: -30px;
-      bottom: -5px;
+      left: -40px;
+      bottom: 0px;
       width: 50px;
       opacity: 0.5;
     }
   }
+  .chat_time_now {
+    position: relative;
+    left: -45px;
+    bottom: 20px;
+    width: 50px;
+    opacity: 0.5;
+  }
   
   /* other */
   
-  .other {
+  .other {position: relative;
     align-self: flex-start;
     margin-left:45px;
+    .chat_time {
+      position: absolute;
+      right: -50px;
+      bottom: 10px;
+      width: 50px;
+      opacity: 0.5;
+    }
   }
   
   .profile_img{
@@ -106,6 +119,7 @@
     height: 35px;
     border-radius: 50%;
     }
+    
   }
   
   .profile_name {
@@ -113,14 +127,7 @@
     font-weight: bold;
     margin: 5px;
   }
-  
-  .other .chat_time {
-    position: absolute;
-    right: -30px;
-    bottom: -5px;
-    width: 50px;
-    opacity: 0.5;
-  }
+
   
   /* footer */
   

@@ -2,7 +2,7 @@ import React from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Profiles = () => {
+const Profile = () => {
   const navigate = useNavigate();
   const auth = getAuth();
   const onLogOutClick = () => {
@@ -16,4 +16,4 @@ const Profiles = () => {
   );
 };
 
-export default Profiles;
+export default Profile;
