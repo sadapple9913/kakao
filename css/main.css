@@ -1,0 +1,23 @@
+/* main.css */
+@import url(common.css);
+
+.tab_bar>ul>li:nth-child(1)>a{color: #513736;}
+
+main{height: 85.8%;padding-top: 64px;}
+
+/* 검색창 */
+
+.search_box{display: flex;flex-direction: row;justify-content: center;align-items: center;height: 7.3%; min-height: 53px;}
+.search_inner{display: flex;justify-content: space-between;width: 88%;height: 50%;
+background: #f1f2f4;border-radius: 5px;}
+.search_inner>i{font-size: 16px;color: #bebcc1;align-self: center; margin-left: 15px;}
+.search_inner>input{flex: 1;background-color: transparent; border: none; padding: 0 15px;}.search_inner>input::placeholder{text-align: center;}
+
+/* main_section */
+.main_section>header{height: 32px;line-height: 32px;padding-left: 15px;border: 1px solid #ebebeb;border-left: none; border-right: none;color: #b6b5b1;}
+.main_section>ul{display: flex;flex-direction: column;}
+.main_section>ul>a{display: flex;align-items: center;font-size: 16px;}
+
+.main_section .profile_img{}
+.main_section .profile_name{float: auto;}
+.main_section .profile_messages{height: 30px;line-height: 30px;margin-right: 15px;padding: 0 10px;border-radius: 5px; background: #f0f0f0;font-size: 10px;color: #8e9399;}

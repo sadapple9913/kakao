@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proflie</title>
+  <meta name="apple-moblie-web-app-capable" content="yes" /> 
+  <!-- 웹의형태로 실행하겠다 -->
+  <meta name="apple-moblie-web-app-status-bar-style" content="default"/>
+  <link rel="apple-touch-icon-precomposed" href=".png">
+  <link rel="apple-touch-startup-image" href=".png">
+  <link rel="stylesheet" href="css/profile.css">
+  <script src="https://kit.fontawesome.com/b4cfa534ba.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <!-- status_bar -->
+    <div class="status_bar">
+      <div class="left_item">
+        <i class="fa-solid fa-plane"></i>
+        <i class="fa-solid fa-wifi"></i>
+      </div>
+      <div class="center_item">
+        <span>15</span>:<span>33</span>
+      </div>
+      <div class="right_item">
+        <i class="fa-regular fa-moon"></i>
+        <i class="fa-brands fa-bluetooth-b"></i>
+        <span><span>100</span>%</span>
+      </div>
+    </div>
+    <!-- //status_bar -->
+
+    <!-- title_bar -->
+    <div class="title_bar">
+      <h1 class="blind">Profile</h1>
+      <div class="left_item"><a href="index.html"><i class="fa-solid fa-xmark"></i></a></div>
+      <div class="right_item"><a href="#"><i class="fa-solid fa-user"></i></a></div>
+    </div>
+    <!-- //title_bar -->
+
+  </header>
+  <!-- //header -->
+
+  <hr>
+
+  <!-- main -->
+  <main>
+    <section class="background">
+      <h2 class="blind">My profile background image</h2>
+    </section>
+    <section class="profile">
+      <h2 class="blind">My profile info</h2>
+      <div class="profile_img empty"></div>
+      <div class="profile_cont">
+        <span class="profile_name">My name</span>
+        <input type="mail" class="profile_email" placeholder="Userid@gmail.com"/>
+        <ul class="profile_menu">
+          <li>
+            <a href="#">
+              <span class="icon">
+                <i class="fa-solid fa-comment"></i>
+              </span>
+              My chatroom
+            </a>
+          </li>
+          <li><a href="#"><span class="icon"><i class="fa-solid fa-pencil"></i></span>Edit Profile</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <!-- //main -->
+
+
+
+  <!-- floating action btn -->
+  <!-- <div class="chat-fa_btn">
+    <a href="#">
+      <i class="fa-solid fa-comment"></i>
+    </a>
+  </div> -->
+  <!-- //floating action btn
+
+  <hr/> -->
+
+  <!-- nav -->
+  <nav class="tab_bar">
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-user"></i>Friends</a></li>
+      <li><a href="chats.html"><i class="fa-solid fa-comment"></i>Chats</a></li>
+      <li><a href="find.html"><i class="fa-solid fa-magnifying-glass"></i>Find</a></li>
+      <li><a href="more.html"><i class="fa-solid fa-ellipsis"></i>More</a></li>
+    </ul>
+  </nav>
+  <!-- //nav -->
+</body>
+</html>

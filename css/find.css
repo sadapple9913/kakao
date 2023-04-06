@@ -1,0 +1,21 @@
+/* find.css */
+@import url(common.css);
+
+
+.tab_bar>ul>li:nth-child(3)>a{color: #513736;}
+
+main{height: 85.8%;padding-top: 64px;}
+
+/* find_method */
+.find_method{display: flex;flex-direction: row;align-items: center;height: 80px;background: #eee;}
+.find_method>li{overflow: hidden;flex: 1;}
+.find_method>li>a{display: flex; flex-direction: column;align-items: center;color: #513736;
+transition: transform 300ms linear 0s;}
+
+.find_method>li>a:hover{transform: scale(1.05);}
+.find_method>li>a>i{font-size: 22px;margin: 5px 0;}
+
+/* recommend_section */
+.recommend_section>header{height: 22px;line-height: 22px;text-indent: 15px;color: #8e938e;}
+.recommend_section>ul>li{height: 54px; line-height: 54px;border-top: 1px solid #ebebeb;
+border-bottom: 1px solid #ebebeb;text-align: center;color: #8e938e;font-size: 14px;}

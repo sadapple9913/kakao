@@ -1,0 +1,31 @@
+@import './Reset';
+
+@import './Tab';
+
+@import './Header';
+
+
+body {
+  font-size: 12px;
+}
+
+a {
+  &:link, &:visited, &:hover, &:focus, &:active {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.empty {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 10px 15px;
+  background: url(../images/empty.jpg) no-repeat 0 0;
+  background-size: cover;
+  border-radius: 50%;
+}

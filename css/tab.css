@@ -1,0 +1,10 @@
+/* tab.css */
+
+.tab_bar{position: fixed;bottom: 0;left: 0;width: 100%;height: 6.4px;min-height: 54px;border-top: 1px solid #c1c1c1;background: #f7f7f7;}
+
+.tab_bar>ul{display: flex;flex-direction: row;margin-top: 10px;}
+.tab_bar>ul>li{flex: 1;text-align: center;
+transition: transform 500ms linear 0s;border: 1px solid red;}
+.tab_bar>ul>li>a{color: #c0c1c2;}
+.tab_bar>ul>li>a>i{display: block;font-size: 22px;}
+.tab_bar>ul>li:hover{transform: scale(1.1);}

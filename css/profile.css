@@ -1,0 +1,26 @@
+/* profile.css */
+@import url(common.css);
+
+body>header{background: transparent;}
+
+.title_bar>.left_item>a{opacity: 1;font-size: 20px;}
+
+
+
+main{height: calc(100% - 10px);}
+
+.background{height: 65%;background: url(../images/bg_default.png) no-repeat 0 0;}
+
+.profile{display: flex;justify-content: center;position: relative;width: 100%;}
+
+.profile_img{position: absolute;left: 50%;top: -65px;width: 100px;height: 100px;margin-left: -50px;}
+
+.profile_cont{display: flex;flex-direction: column;align-items: center;margin-top: 45px;}
+.profile_name{font-size: 16px;}
+.profile_cont input{width: 148px;height: 24px;margin: 15px 0 20px; padding: 0 5px;text-align: center;border: none;}
+
+.profile_menu{display: flex;}
+.profile_menu li{margin: 0 6px;}
+.profile_menu li a{display: flex;flex-direction: column;align-items: center;font-weight: bold;}
+.profile_menu li span{display: block;width: 52px;height: 52px;border-radius: 50px;line-height: 52px;text-align: center;margin-bottom: 15px;background-color: #f2f2f2;color: #513736;font-size: 20px;}
+
