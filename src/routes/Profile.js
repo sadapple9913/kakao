@@ -8,7 +8,7 @@ function Profile() {
   const location = useLocation(); //react-router-dom에서 제공하는 함수
   console.log(location);
 
-  const { images, name, id, city } = location.state;
+  const { images, name, id, city , backImages ,username} = location.state;
 
   return (
     <div className="profile_wrap">
@@ -17,7 +17,7 @@ function Profile() {
       <div className="profile_main">
         <section className="background">
           <h2 className="blind">My profile background image</h2>
-          <img src={images} alt="Profile image" />
+          <img src={backImages} alt="Profile image" />
         </section>
         <section className="profile">
           <h2 className="blind">My profile info</h2>
@@ -27,14 +27,10 @@ function Profile() {
           </div>  
           <div className="profile_cont">
             <span className="profile_name">{name}</span>
-            <input
-              type="mail"
-              className="profile_email"
-              placeholder="Userid@gmail.com"
-            />
+            <span className="profile_messages">{username}</span>
             <ul className="profile_menu">
               <li>
-                <Link to="/Chatting " state={{ images, name, id, city }}>
+                <Link to="/Chatting " state={{ images, name, id, city , backImages }}>
                   <span className="icon">
                     <FaComment />
                   </span>

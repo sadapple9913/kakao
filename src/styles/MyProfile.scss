@@ -1,7 +1,7 @@
 @import 'common.scss';
 
 .profile_wrap{
-
+position: relative;
  width: 100%; height: 100%;
 
   Header {
@@ -21,8 +21,8 @@
   .background {
     width: 100%;
     height: 65%;
-    // background: url(../images/bg_default.png) no-repeat 0 0;
-    // background-size: cover;
+    background: url(../images/bg_default.png) no-repeat 0 0;
+    background-size: cover;
     img{
       width: 100%;
       height: 100%;
@@ -70,7 +70,10 @@
     text-align: center;
     border: none;
   }
-  
+  .statusMessage{
+    margin-top: 15px;
+      }
+    
   .profile_menu {
     display: flex;
   
@@ -101,10 +104,11 @@
   }
 
   .LogOut{
-    position: absolute;
-    bottom: 320px;
-    right: 5px;
+    display: block;
+    position: relative;
+    bottom: -100px;
     border: none;
+    text-align: right;
     background: transparent;
     font-family: orbitron,sans-serif;
     font-size: 10px;

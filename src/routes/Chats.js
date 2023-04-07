@@ -23,17 +23,18 @@ function Chats() {
     console.log(datas); // log the updated data
   }
 
-  const profilesImages = profiles.slice(1, 10).map((profile) => profile.images);
-  const datasNamesIds = datas.slice(1, 10).map((profile) => ({
-    name: profile.name,
+  const profilesImages = profiles.map((profile) => profile.images);
+  const datasNamesIds = datas.map((profile) => ({
     id: profile.id,
-    city : profile.address.city,
-    username : profile.username,
+    name: profile.name,
+    city: profile.address.city,
+    username: profile.username,
   }));
-
+  
   const combinedProfiles = profilesImages.map((image, index) => ({
     ...datasNamesIds[index],
     images: image,
+    backImages: profiles[index].backImages
   }));
 
   return (
@@ -66,6 +67,7 @@ function Chats() {
               images={profile.images}
               city={profile.city}
               username={profile.username}
+              backImages={profile.backImages}
             />
           ))}
         </section>

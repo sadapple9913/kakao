@@ -14,7 +14,7 @@ function Chatting({ userObj }) {
   console.log("location ->",location);
 
 
-  const { name, images, id, city } = location.state;
+  const { name, images, id, city , backImages, username} = location.state;
 console.log(city);
   console.log(`userObj->`,userObj);
 
@@ -107,7 +107,7 @@ console.log(city);
 
         <div className="chat_box other">
           <div className="other_info">
-              <Link to="/profile" state={{images , name}} >
+              <Link to="/profile" state={{images , name , backImages ,username}} >
                 <span className="profile_img empty">
                   <img src={images} />
                 </span>

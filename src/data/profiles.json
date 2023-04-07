@@ -2,52 +2,63 @@
   {
     "id":"1",
     "name":"Leanne Graham",
-    "images":"https://i.pinimg.com/originals/e5/5b/33/e55b334266cfb46ce45ef60da6bf3438.png"
+    "images":"https://i.pinimg.com/564x/a6/a2/b3/a6a2b3a915e54e3060d8b1a430804c47.jpg",
+    "backImages" : "https://i.pinimg.com/564x/19/3b/01/193b011a9ccc08640e4e975a706d817c.jpg"
   },
   {
     "id":"2",
     "name":"Ervin Howell",
-    "images":"https://i.pinimg.com/236x/86/88/0f/86880f4b37fd841748836d483ed49308.jpg"
+    "images":"https://i.pinimg.com/564x/86/88/0f/86880f4b37fd841748836d483ed49308.jpg",
+    "backImages" : "https://i.pinimg.com/564x/0d/e8/44/0de844e4c4d79d775cc10cc2aca4212b.jpg"
+    
   },
   {
     "id":"3",
     "name":"Ceren Gündüz",
-    "images":"https://i.pinimg.com/236x/4e/a0/a5/4ea0a582ec453b21c504370488eef0a9.jpg"
+    "images":"https://i.pinimg.com/564x/4e/a0/a5/4ea0a582ec453b21c504370488eef0a9.jpg",
+    "backImages" : "https://i.pinimg.com/564x/e4/05/0b/e4050b92335cde4a3b5ae340fc8c5ee3.jpg"
   },
   { 
     "id":"4",
     "name": "Patricia Lebsack",
-    "images":"https://i.pinimg.com/236x/e7/28/24/e7282422ff50cd6dabb6e9a67c36a2e0.jpg"
+    "images":"https://i.pinimg.com/564x/e7/28/24/e7282422ff50cd6dabb6e9a67c36a2e0.jpg",
+    "backImages" : "https://i.pinimg.com/564x/26/f1/64/26f16449d2a1ed04849dc14c5183c0af.jpg"
   },
   {
     "id":"5",
     "name": "Chelsey Dietrich",
-    "images":"https://i.pinimg.com/236x/b7/0c/75/b70c757a13b2d216711646fd9e5e6068.jpg"
+    "images":"https://i.pinimg.com/564x/b7/0c/75/b70c757a13b2d216711646fd9e5e6068.jpg",
+    "backImages" : "https://i.pinimg.com/564x/b7/0c/75/b70c757a13b2d216711646fd9e5e6068.jpg"
   },
   {
     "id":"6",
     "name": "Blue.D",
-    "images":"https://i.pinimg.com/236x/f6/34/d5/f634d5b0c4ab625d9549edcd9b1225f2.jpg"
+    "images":"https://i.pinimg.com/564x/f6/34/d5/f634d5b0c4ab625d9549edcd9b1225f2.jpg",
+    "backImages" : "https://i.pinimg.com/564x/1a/00/63/1a00631a59fb9d8b6007ad76089fe4a5.jpg"
   },
   {
     "id":"7",
     "name": "Kurtis Weissnat",
-    "images":"https://i.pinimg.com/236x/b1/ff/ed/b1ffedb37be7a024001006589e10a8d7.jpg"
+    "images":"https://i.pinimg.com/564x/b1/ff/ed/b1ffedb37be7a024001006589e10a8d7.jpg",
+    "backImages" : "https://i.pinimg.com/564x/86/8c/6b/868c6b07c0f4ba1aa000ad0b2fb3baa6.jpg"
   },
   {
     "id":"8",
     "name": "Clementina DuBuque",
-    "images":"https://i.pinimg.com/236x/d8/2c/a7/d82ca7c4f12d83189fa80d6dfb447a62.jpg"
+    "images":"https://i.pinimg.com/564x/d8/2c/a7/d82ca7c4f12d83189fa80d6dfb447a62.jpg",
+    "backImages" : "https://i.pinimg.com/564x/31/be/03/31be033a7dad0b29e45497f411dcc515.jpg"
   },
   {
     "id":"9",
     "name": "Glenna Reichert",
-    "images":"https://i.pinimg.com/236x/0c/1c/e8/0c1ce8b381942ab9bc888f34ae92cc0c.jpg"
+    "images":"https://i.pinimg.com/564x/4e/9d/be/4e9dbebb1bd69da0095d4c74d5fa8d0e.jpg",
+    "backImages" : "https://i.pinimg.com/564x/4e/9d/be/4e9dbebb1bd69da0095d4c74d5fa8d0e.jpg"
   },
   {
     "id":"10",
     "name": "Eda Altun",
-    "images":"https://i.pinimg.com/236x/a0/af/04/a0af04335664c120f61605034e0b6191.jpg"
+    "images":"https://i.pinimg.com/564x/a0/af/04/a0af04335664c120f61605034e0b6191.jpg",
+    "backImages" : "https://i.pinimg.com/564x/4c/5c/e9/4c5ce9440d4ad550e863c7af917ac9fb.jpg"
   }
   
 ]

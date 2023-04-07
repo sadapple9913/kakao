@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Chats.scss";
 
-function ChatList({ images, name, id , city , text}) {
+function ChatList({ images, name, id , city , text ,backImages }) {
   return (
     <ul>
       <li>
-        <Link to="/Chatting " state={{ images, name, id ,city }}>
+        <Link to="/Chatting " state={{ images, name, id ,city , backImages}}>
           <span className="chats_img empty">
             <img src={images} alt="My Image"></img>
           </span>

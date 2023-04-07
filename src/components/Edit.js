@@ -3,22 +3,44 @@ import { updateProfile } from "firebase/auth";
 import {db, storage} from '../fbase'
 import { getDownloadURL, ref, uploadString}  from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
-import "../styles/Edit.scss";
-import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+// import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProfileHeader from "./ProfileHeader";
 import "../styles/Edit.scss";
+import { useNavigate } from 'react-router-dom';
+import { addDoc, collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import StatusMessage from "./StatusMessage";
 
 
 function Edit({userObj}) {
 const [newDisplayName , setNewDisplayName] = useState(userObj.displayName);
 console.log(userObj);
-const [talks, setTalks] = useState([]);
-const[attachment ,setAttachment ] = useState("");
-// const [goBack, setGoBack] = useState(false);
 
-// const goBackClick = () => {
-//     setGoBack(true);
-//   };
+const [attachment ,setAttachment ] = useState("");
+const [background ,setBackground ] = useState("");
+
+const [profilePhoto, setProfilePhoto] = useState("");
+
+const navigate = useNavigate();
+
+useEffect(() =>{
+  // getTweets();
+  const q = query(collection(db,"photo"),orderBy("createdAt" ,"asc"));
+
+    const unsubscribe = onSnapshot(q,(querySnapshot) => {
+      const newArray = [];
+      querySnapshot.forEach((doc) =>{
+        newArray.push({...doc.data(), id:doc.id});
+        console.log("newA->",newArray);
+      });
+      if (newArray.length > 0) { // 배열이 비어있는 경우 체크
+        const lastBackgroundUrl = newArray[newArray.length - 1].backgroundURL;
+        setProfilePhoto(lastBackgroundUrl);
+      } else {
+        setProfilePhoto(""); // 비어있는 경우 빈 문자열("")을 상태값으로 설정
+      }
+    });
+},[]);
 
   const onChange = (e) =>{
     e.preventDefault();
@@ -33,19 +55,39 @@ const[attachment ,setAttachment ] = useState("");
     let attachmentUrl = "";
     if (attachment !== "") {
       const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
-      const response = await uploadString(storageRef, attachment, "data_url");
+      const response = await uploadString(storageRef, attachment ,"data_url");
       attachmentUrl = await getDownloadURL(ref(storage, response.ref));
     }
     await updateProfile(userObj, {
       displayName: newDisplayName,
-      photoURL: attachmentUrl /* !== "" ? attachmentUrl : userObj.photoURL, */
+       photoURL:attachmentUrl !== "" ? attachmentUrl : userObj.photoURL,
     });
+
   } catch (e) {
     console.error("Error updating profile: ", e);
   }
-  setAttachment(userObj.photoURL);
+  setAttachment("");
 };
 
+
+const onPhotoSubmit = async (e) => {
+  e.preventDefault();
+  let backgroundURL = "";
+  try {
+    const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
+    const response = await uploadString(storageRef, background ,"data_url");
+    backgroundURL = await getDownloadURL(ref(storage, response.ref));  
+    const docRef = await addDoc(collection(db, "photo"), {
+      createdAt: Date.now(),
+      creatorId: userObj.uid, // ID of the logged in user
+      backgroundURL: backgroundURL !== "" ? backgroundURL : backgroundURL
+    });
+    setBackground("");
+  } catch (e) {
+    console.error("Error updating profile: ", e);
+  }
+   // setBackground("");
+};
 
   const onFileChange = (e) =>{
     e.preventDefault();
@@ -59,19 +101,46 @@ const[attachment ,setAttachment ] = useState("");
     reader.onloadend = (finishedEvent) => {
       console.log("finishedEvent ->" ,finishedEvent);
       const {currentTarget:{result}} = finishedEvent
+   
       setAttachment(result);
     }
-    reader.readAsDataURL(theFile); //theFile이라는 값을 U RL로 읽어서 보이게 한다
+    reader.readAsDataURL(theFile); //theFile이라는 값을 URL로 읽어서 보이게 한다
   }
+
+  const onPhotoFileChange = (e) =>{
+    e.preventDefault();
+    console.log('e->',e);
+    const {target:{files}} = e;
   
+    const theFile = files[0];
+    console.log('theFile->',theFile);
+  
+    const reader = new FileReader(); //브라우저에 사진미리보기를 하고싶으면 FileReader를 사용해야된다
+    reader.onloadend = (finishedEvent) => {
+      console.log("finishedEvent ->" ,finishedEvent);
+      const {currentTarget:{result}} = finishedEvent
+      console.log('123->',result);
+      setBackground(result);
+    }
+    reader.readAsDataURL(theFile); //theFile이라는 값을 URL로 읽어서 보이게 한다
+  }
+
   const onClearAttachment = (e) =>{
     e.preventDefault();
     setAttachment("");
+  
+  }
+
+  const onClearBackground = (e) =>{
+    e.preventDefault();
+    setBackground("");
+  
   }
   
   console.log("attachment",attachment);
   console.log("newDisplayName ", newDisplayName )
-  
+  console.log("background",background);
+
   return (
     <div className="profile_wrap">
     <ProfileHeader />
@@ -79,33 +148,73 @@ const[attachment ,setAttachment ] = useState("");
     <div className="profile_main">
       <section className="background">
         <h2 className="blind">My profile background image</h2>
-        <img src={userObj.photoURL} alt="Profile image" />
+        <img src={profilePhoto} alt="background image" />
+        <from onSubmit={onPhotoSubmit} className="photoProfile" >
+          <label className="photoSelect" htmlFor="attach-photofile">
+          <span className="Icon_wrap">
+          <FontAwesomeIcon className="Icon" icon="fa-solid fa-camera-retro" />
+          <input className="photofile" type='file' accept='image/*' onChange={onPhotoFileChange} style={{opacity:0}}  id="attach-photofile"/>
+          </span>
+        </label>
+        </from>
       </section>
 
-        <section className="profile">
+      <section className="profile">
           <h2 className="blind">My profile info</h2>
           <div className="Profile_profile_img empty">
             <img src={userObj.photoURL} alt="Profile image" />
             <images />
           </div>
           </section>
-          <form onSubmit={onSubmit} className="Edit_container">  
-            <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder="Display Name"/>
-            <input className="submit_name" type="submit" value="이름" />
-            <input className="submit_image" type="submit" value="올리기" />
+
+      <form onSubmit={onSubmit}>  
+   
+            <div className="profileName_wrap">
+            <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder={newDisplayName}/>
+            <button type="submit" className="submit_name">
+            {/* <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> */}
+            done
+            </button>
+            </div>
+
             <label className="select" htmlFor="attach-file">
+              <span className="Icon_wrap">
+              <FontAwesomeIcon className="Icon" icon="fa-solid fa-camera-retro" />
+              </span>
             <input className="file" type='file' accept='image/*' onChange={onFileChange} style={{opacity:0}}  id="attach-file"/>
             </label>
-            {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
-              <div>
-                <img src={attachment} width="50" height="50" alt='' />
-                <button className="remove" onClick={onClearAttachment}>x</button>
+      </form> 
+
+      <StatusMessage userObj={userObj}/>
+          
+          <button className="back_button" onClick={() => navigate(-1)}>Back</button>
+
+
+          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+              <div className="preview">
+                <img src={attachment} alt='' />
+                <button className="remove" onClick={onClearAttachment}>
+                <FontAwesomeIcon icon="fa-solid fa-xmark" />
+                </button>
+                <form onSubmit={onSubmit}>
+                <input className="submit_image" type="submit" value="done" />
+                </form>
+
               </div>
             )}
-          </form> 
 
+              {background && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+              <div className="preview">
+                <img src={background} alt='' />
+                <button className="remove" onClick={onClearBackground}>
+                <FontAwesomeIcon icon="fa-solid fa-xmark" />
+                </button>
+                <form onSubmit={onPhotoSubmit}>
+                <input className="submit_image" type="submit" value="done" />
+                </form>
 
-
+              </div>
+            )}
     </div>
   </div>
 

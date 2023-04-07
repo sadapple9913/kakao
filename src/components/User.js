@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Friends.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function User({images,name,id,city ,username}) {
+function User({images,name,id,city ,username , backImages}) {
 
   return (
     <li className="friend_wrap">
-    <Link to = "/Profile" state={{images,name,id, city ,username}}>
+    <Link to = "/Profile" state={{images,name,id, city ,username , backImages}}>
         <span className="Profile_img empty">
         <img src={images} alt="My Image"></img>
         </span>

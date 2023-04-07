@@ -11,6 +11,12 @@ import Friends from "./routes/Friends";
 import My from "./components/My";
 import MyProfile from "./routes/MyProfile";
 import Edit from "./components/Edit";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, faFontAwesome )
+
 
 function App() {
   const auth = getAuth();
