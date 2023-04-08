@@ -75,9 +75,9 @@ function Chats() {
 
       <div className="floating">
         <div className="chat_fa_btn">
-          <a href="#">
+          <div>
             <FaComment />
-          </a>
+          </div>
         </div>
       </div>
 

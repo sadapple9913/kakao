@@ -41,17 +41,15 @@ function StatusMessage({ userObj}) {
 
   return (
     <form onSubmit={onStatusSubmit}>
-      <div className="profileName_wrap">
-        <input
-          className="profileName"
-          type="text"
-          onChange={onChange}
-          value={status}
-          placeholder={status}
-        />
+      <div className="profileName_wrap_edit">
+        <div className="statusMessage_wrap">
+      {myStatus.length > 0 && (
+        <input className="statusMessage_edit" type="text" onChange={onChange} value={status} placeholder={myStatus[myStatus.length - 1].statusMessage}/>
+        )}
         <button type="submit" className="submit_name">
           done
         </button>
+        </div>
       </div>
     </form>
   );

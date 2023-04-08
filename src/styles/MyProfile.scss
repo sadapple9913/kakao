@@ -59,7 +59,7 @@ position: relative;
   
   .profile_name {
     margin-top: 15px;
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .profile_cont input {
@@ -72,7 +72,8 @@ position: relative;
   }
   .statusMessage{
     margin-top: 15px;
-      }
+    font-size: 14px;
+  }
     
   .profile_menu {
     display: flex;
@@ -106,13 +107,15 @@ position: relative;
   .LogOut{
     display: block;
     position: relative;
-    bottom: -100px;
+    bottom: -90px;
+    left: 10px;
     border: none;
     text-align: right;
     background: transparent;
     font-family: orbitron,sans-serif;
     font-size: 10px;
     font-weight: bold;
+    cursor: pointer;
   }
 
 }

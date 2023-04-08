@@ -31,13 +31,13 @@ function Header() {
         </h1>
         <div className="left_item">
           <Link to="/">
-          <a href="#">Manage</a>
+            Main
           </Link>
         </div>
         <div className="right_item">
-          <a href="#">
+
             <FaCog />
-          </a>
+
         </div>
       </div>
       {/* //title_bar */}

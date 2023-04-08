@@ -169,7 +169,7 @@ const onPhotoSubmit = async (e) => {
 
       <form onSubmit={onSubmit}>  
    
-            <div className="profileName_wrap">
+            <div className="profileName_wrap_edit">
             <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder={newDisplayName}/>
             <button type="submit" className="submit_name">
             {/* <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> */}

@@ -3,7 +3,7 @@
 
 .friend_wrap{
 
-  .tab_bar>ul>li:nth-child(1)>a{color: #513736;}
+  .tab_bar>ul>li:nth-child(1)>a{color: #e73446;}
 
 
   .main {
@@ -42,7 +42,7 @@
         flex: 1;
         background-color: transparent;
         border: none;
-        padding: 0 15px;
+        padding: 5px 15px;
   
         &::placeholder {
           text-align: center;
@@ -95,6 +95,18 @@
     }
   
     .profile_messages {
+      position:absolute;
+      right: 0;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 15px;
+      padding: 0 10px;
+      border-radius: 5px;
+      background: #f0f0f0;
+      font-size: 10px;
+      color: #8e9399;
+    }
+    .statusMessage_my{
       position:absolute;
       right: 0;
       height: 30px;

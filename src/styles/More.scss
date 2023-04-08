@@ -2,7 +2,7 @@
 
 .more_wrap{
 
-  .tab_bar>ul>li:nth-child(4)>a{color: #513736;}
+  .tab_bar>ul>li:nth-child(4)>a{color: #e73446;}
 
   .main {
     height: 85.8%;
@@ -32,6 +32,12 @@
         font-size: 18px;
         font-weight: bold;
         margin-top: 10px;
+      }
+
+      .statusMessage_my{
+        position: absolute;
+        top: 105px;
+        left: 80px;
       }
     }
   }

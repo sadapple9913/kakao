@@ -8,6 +8,7 @@ import { querySnapshot, addDoc, getDocs, onSnapshot, orderBy, query, collection,
 import { v4 as uuidv4 } from 'uuid';
 import {db,storage} from '../fbase'
 import {ref, uploadString, getDownloadURL } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Chatting({ userObj }) {
   const location = useLocation(); //react-router-dom에서 제공하는 함수
@@ -15,6 +16,7 @@ function Chatting({ userObj }) {
 
 
   const { name, images, id, city , backImages, username} = location.state;
+
 console.log(city);
   console.log(`userObj->`,userObj);
 
@@ -23,7 +25,6 @@ console.log(city);
   const[attachment ,setAttachment ] = useState("");
 
   useEffect(() =>{
-    // getTweets();
     const q = query(collection(db,"talks"), where("userName.name", "==", name), orderBy("createdAt" ,"asc"));
 
       const unsubscribe = onSnapshot(q,(querySnapshot) => {
@@ -140,30 +141,25 @@ console.log(city);
                         {attachmentUrl && (
                         <img src={attachmentUrl} width="50" height="50" alt=''  />
                         )}
-
-            {/* <span className="chat_time">
-              <span>15</span>:<span>33</span>
-            </span> */}
+                        
           </div>
 
 
         <footer>
           <span className="plus_btn">
-            <a href="#">
               <FaPlus />
-            </a>
           </span>
           <form action="/" method="post" className="from" onSubmit={onSubmit}>
             <fieldset className="text_box">
               <legend className="blind">채팅입력창</legend>
-                <input
-                  type='text'
-                  value={talk}
-                  onChange={onChange}
-                  placeholder=""
-                />
-                <input type='file' accept='image/*' onChange={onFileChange} />
-                <input type='submit' value={'send'} />
+                <input className="sending_message" type='text' value={talk} onChange={onChange} placeholder="" />
+                <label htmlFor="file_chat" className="file_up_chat">
+                <input type='file' accept='image/*' onChange={onFileChange} id="file_chat" style={{opacity:0}}/>
+                </label>  
+                <label htmlFor="sending" className="sending">
+                <FontAwesomeIcon icon="fa-solid fa-arrow-up" />
+                <input type='submit' value={'send'} id="sending" style={{opacity:0}}/>
+                </label>
             </fieldset>
           </form>
         </footer>

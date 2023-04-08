@@ -18,8 +18,7 @@ function More({userObj , images}) {
     <section className="user_info">
       <h2 className="blind">사용자 정보</h2>
         <My userObj={userObj} />
-      <span className="profile_email">Userid@gmail.com</span>
-      <span className="chat_img"><a href="#"><FaRegComment /></a></span>
+      <span className="chat_img"><FaRegComment /></span>
     </section>
 
     <section className="user_menu">

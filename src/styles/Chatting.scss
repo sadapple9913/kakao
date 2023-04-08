@@ -2,14 +2,14 @@
 @import 'common.scss';
 
 /* header */
+
 .Chatting_wrap{
-  
   width: 100%; height: 100%;
   
     header {
     color: #000;
-    background-color: #a1c0d5;
-    border-bottom: 1px solid #96acba;
+    background-color: tomato;
+    border-bottom: 1px solid tomato;
   }
   
   .title_bar > {
@@ -73,9 +73,44 @@
     align-items: flex-end;
     max-width: 240px;
     margin-right: 10px;
-  
+
     .chat {
+      position: relative;
       background: #ffe73a;
+      max-width: 280px;
+      overflow-wrap: break-word;
+      .delelte_btn{
+        position:absolute;
+        left: -45px;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        font-size: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        svg{
+         position: relative;
+         left: 50%;
+         transform: translateX(-50%);
+        }
+      }
+      .fix_btn{
+        position:absolute;
+        left: -25px;
+        top: 7px;
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        svg{
+         position: relative;
+         left: 50%;
+         transform: translateX(-50%);
+        }
+      }
     }
     .chat_time {
       position: absolute;
@@ -87,12 +122,40 @@
   }
   .chat_time_now {
     position: relative;
-    left: -45px;
-    bottom: 20px;
+    left: -40px;
+    bottom: 17px;
     width: 50px;
     opacity: 0.5;
   }
-  
+  .fix_container{
+    width: 100%;
+    margin-bottom: 15px;
+    .fix_wrap{
+      width: 75%;
+      background: #ffe73a;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 5px;
+      font-family: orbitron, sans-serif;
+      font-size: 16px;
+    }
+  .done{
+    background: transparent;
+    border: none;
+    font-family: orbitron, sans-serif;
+    font-size: 12px;
+  }
+ 
+  }
+  .return{
+    position: relative;
+    top: -40px;
+    right: 25px;
+    border: 0;
+    background: transparent;
+
+  }
+
   /* other */
   
   .other {position: relative;
@@ -143,50 +206,86 @@
     background: #eee;
   }
   
-  .plus_btn a {
-    color: #b3b4b4;
-    padding-left: 15px;
+  .plus_btn svg{
+    color: #000;
     font-size: 16px;
+    margin-left: 5px;
+    margin-top: 4px;
   }
-  
-    form {
+
+  form {
     width: calc(100% - 40px);
     display: flex;
-    justify-content: flex-end;
+    justify-content: left;
   }
-  
+
   fieldset.text_box {
     position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-  }
-  
-  .text_field {
-    width: calc(100% - 40px);
-    height: 32px;
-  }
-  
-  .emoticon_btn {
-    position: absolute;
-    right: 45px;
-  
-    a {
-      color: #b3b4b4;
+    left: 20px;
+    .sending_message{
+     position: absolute;
+     width: 100%;
+     left: -30px;
+     padding: 8px 0 8px 5px;
+     border: 1px solid #ccc;
+     border-radius: 20px;
+     outline: none;
+     text-indent: 10px;
+     font-family: orbitron , sans-serif;
+    }
+    .file_up_chat{
+      position: absolute;
+      left: -55px;
+      width: 20px;
+
+      input{
+        width: 20px;
+      }
+
     }
   }
+    .sending{
+      position: absolute;
+      right: 24px;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: tomato;
+      svg{
+        font-size: 18px;
+        margin-left: 9px;
+        margin-top: 7px;
+      }
+    }
+ 
+  // .text_field {
+  //   width: calc(100% - 40px);
+  //   height: 32px;
+  // }
   
-  .voice_btn > a {
-    display: block;
-    width: 34px;
-    height: 37px;
-    margin-right: 5px;
-    line-height: 37px;
-    background: #ffe73a;
-    color: #513736;
-    font-size: 16px;
-    text-align: center;
-  }
+//   .emoticon_btn {
+//     position: absolute;
+//     right: 45px;
+  
+//     a {
+//       color: #b3b4b4;
+//     }
+//   }
+  
+//   .voice_btn > a {
+//     display: block;
+//     width: 34px;
+//     height: 37px;
+//     margin-right: 5px;
+//     line-height: 37px;
+//     background: #ffe73a;
+//     color: #513736;
+//     font-size: 16px;
+//     text-align: center;
+//   }
 
 }

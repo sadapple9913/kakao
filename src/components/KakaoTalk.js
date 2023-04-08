@@ -53,20 +53,18 @@ function KakaoTalk(props) {
     <div>
       {editing ? (
         <>
-        <form onSubmit = {onSubmit}>
-          <input type='text' onChange={onChange} value={newTalk} required />
-          <input type='submit' value="수정" />
+        <form className='fix_container' onSubmit = {onSubmit}>
+          <input className='fix_wrap' type='text' onChange={onChange} value={newTalk} required />
+          <input className='done' type='submit' value="done" />
           </form > 
-          <button onClick={toggleEditing}><FaUndoAlt /></button>
+          <button className='return' onClick={toggleEditing}><FaUndoAlt /></button>
 
         </>
 
       ) : (
         <>
         <div className='chat'>
-        <Link to="/ChatList" state={{text}} >
           <h4>{text}</h4>
-        </Link>
         {attachmentUrl && (
         <img src={attachmentUrl} width="50" height="50" alt=''  />
         )}
@@ -74,8 +72,8 @@ function KakaoTalk(props) {
 
         {isOwner && (
           <>
-          <button onClick={onDeleteClick}><FaTimes /></button>
-          <button onClick={toggleEditing}><FaPen /></button>
+          <button className='delelte_btn' onClick={onDeleteClick}><FaTimes /></button>
+          <button className='fix_btn' onClick={toggleEditing}><FaPen /></button>
           </>
  
         )} 
