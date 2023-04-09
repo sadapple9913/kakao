@@ -8,7 +8,7 @@ function LastMessage(props) {
   const [lastTalk, setLastTalk] = useState("");
 
   useEffect(() => {
-    const q = query(collection(db, "talks"), /* where("chatId", "==", chatId),  */orderBy("createdAt", "desc"));
+    const q = query(collection(db, "talks"), /* where("chatId", "==", chatId),  */ orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newTalks = {};
       querySnapshot.forEach((doc) => {
@@ -20,10 +20,6 @@ function LastMessage(props) {
       });
       setLastTalk(newTalks[chatId]?.text || "");
     });
-
-    return () => {
-      unsubscribe();
-    };
   }, [chatId]);
 
   return (

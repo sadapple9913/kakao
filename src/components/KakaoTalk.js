@@ -64,7 +64,9 @@ function KakaoTalk(props) {
       ) : (
         <>
         <div className='chat'>
+          <Link to="/Chats" state={text}>
           <h4>{text}</h4>
+          </Link>
         {attachmentUrl && (
         <img src={attachmentUrl} width="50" height="50" alt=''  />
         )}

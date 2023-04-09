@@ -3,7 +3,6 @@ import { updateProfile } from "firebase/auth";
 import {db, storage} from '../fbase'
 import { getDownloadURL, ref, uploadString}  from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
-// import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProfileHeader from "./ProfileHeader";
 import "../styles/Edit.scss";

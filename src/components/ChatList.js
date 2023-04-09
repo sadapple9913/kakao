@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Chats.scss";
 import LastMessage from "./LastMessage";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { db } from "../fbase";
 
 
-function ChatList({ images,text, name, id , city , backImages},userObj) {
+function ChatList({ images,name, id , city , backImages},userObj) {
 
 
   const [talk, setTalk] = useState("");
   const [talks, setTalks] = useState([]);
 
-  // const q = query(collection(db, "talks"), /* where("userName.name", "==", name), */ orderBy("createdAt", "desc"));
+  // const q = query(collection(db, "talks"),/*  where("userName.name", "==", name), */ orderBy("createdAt", "desc"));
+  // console.log(name)
   // const unsubscribe = onSnapshot(q, (querySnapshot) => {
   //   const newTalks = {};
   //   querySnapshot.forEach((doc) => {

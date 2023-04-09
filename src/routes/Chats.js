@@ -62,6 +62,7 @@ function Chats() {
           </div>
           {combinedProfiles.map((profile) => (
             <ChatList
+              key={profile.key}
               name={profile.name}
               id={profile.id}
               images={profile.images}

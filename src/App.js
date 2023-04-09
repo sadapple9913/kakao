@@ -15,7 +15,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
-library.add(fas, faFontAwesome )
+library.add(fas,faFontAwesome )
 
 
 function App() {

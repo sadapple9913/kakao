@@ -54,7 +54,6 @@ console.log(city);
         console.log('reponse ->',response)
         attachmentUrl = await getDownloadURL(ref(storage, response.ref));//https:
       }
-
       const docRef = await addDoc(collection(db, "talks"), {
         text: talk,
         userName:{name},
@@ -91,9 +90,10 @@ console.log(city);
   }
 
   return (
-    <div className="Chatting_wrap">
-      <ChattingHeader />
 
+    <div className="Chatting_wrap" >
+      <ChattingHeader />
+      <Link to="/Chatting " state={{ images, name, id ,city , backImages}}/>
       <div className="chatting_main">
         <span className="date_info">{id}</span>
 
