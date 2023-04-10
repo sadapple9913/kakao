@@ -6,13 +6,18 @@ import { collection, onSnapshot, orderBy, query, where } from "firebase/firestor
 import { db } from "../fbase";
 
 
-function ChatList({ images,name, id , city , backImages},userObj) {
+function ChatList({ images, name, id , city , backImages },userObj) {
 
+  console.log("1233251",name);
 
   const [talk, setTalk] = useState("");
   const [talks, setTalks] = useState([]);
 
-  // const q = query(collection(db, "talks"),/*  where("userName.name", "==", name), */ orderBy("createdAt", "desc"));
+  // const q = query(collection(db, "talks"),
+
+  //  where("userName.name", "==", name),
+
+  //  orderBy("createdAt", "desc"));
   // console.log(name)
   // const unsubscribe = onSnapshot(q, (querySnapshot) => {
   //   const newTalks = {};
@@ -40,6 +45,7 @@ function ChatList({ images,name, id , city , backImages},userObj) {
               <LastMessage
                  talkObj={talks[id] ? talks[id] : null}
                  isOwner={talks[id]?.creatorId === userObj.uid}
+                 name={name}
               />
             </span>
           </span>

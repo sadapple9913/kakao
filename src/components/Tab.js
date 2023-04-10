@@ -3,7 +3,7 @@ import { FaUser, FaComment, FaSistrix, FaEllipsisH } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../styles/Tab.scss';
 
-function Nav() {
+function Nav(name) {
   return (
     <div className='tab_wrap'>
     <nav className="tab_bar">
@@ -15,7 +15,8 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/Chats">
+          <Link to="/Chats" state={{name}}>
+            <Link to="/ChatList" state={{name}} />
             <FaComment />
             Chats
           </Link>

@@ -26,7 +26,7 @@ function More({userObj , images}) {
           Emoticons
           </li>
         <li>
-          <FontAwesomeIcon icon="fa-regular fa-envelope" />
+          <FontAwesomeIcon icon="fa-solid fa-envelope" />
           mail
           </li>
         <li>

@@ -4,12 +4,12 @@ import Tab from "../components/Tab";
 import { FaSistrix, FaComment } from "react-icons/fa";
 import ChatList from "../components/ChatList";
 import profiles from "../data/profiles.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/Chats.scss";
 
-function Chats() {
+function Chats({name}) {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {

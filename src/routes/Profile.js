@@ -30,7 +30,7 @@ function Profile() {
             <span className="profile_messages">{username}</span>
             <ul className="profile_menu">
               <li>
-                <Link to="/Chatting " state={{ images, name, id, city , backImages }}>
+                <Link to="/Chatting " state={{ images, name, id, city , backImages , username}}>
                   <span className="icon">
                     <FaComment />
                   </span>

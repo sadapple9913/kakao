@@ -4,11 +4,16 @@ import { collection, onSnapshot, orderBy, query, where } from "firebase/firestor
 import { db } from '../fbase'
 
 function LastMessage(props) {
-  const { chatId, isOwner } = props;
+  const { chatId, isOwner ,name } = props;
   const [lastTalk, setLastTalk] = useState("");
-
+ console.log(name);
   useEffect(() => {
-    const q = query(collection(db, "talks"), /* where("chatId", "==", chatId),  */ orderBy("createdAt", "desc"));
+    if (!name) return;
+    const q = query(collection(db, "talks"), 
+
+    where("userName.name", "==", name), 
+    
+    orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newTalks = {};
       querySnapshot.forEach((doc) => {
@@ -20,7 +25,8 @@ function LastMessage(props) {
       });
       setLastTalk(newTalks[chatId]?.text || "");
     });
-  }, [chatId]);
+    return unsubscribe;
+  }, [name, chatId, isOwner]);
 
   return (
     <h4>{lastTalk}</h4>

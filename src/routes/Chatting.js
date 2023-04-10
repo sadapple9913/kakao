@@ -93,7 +93,7 @@ console.log(city);
 
     <div className="Chatting_wrap" >
       <ChattingHeader />
-      <Link to="/Chatting " state={{ images, name, id ,city , backImages}}/>
+      <Link to="/Chatting " state={{ images, name, id ,city , backImages }}/>
       <div className="chatting_main">
         <span className="date_info">{id}</span>
 
@@ -108,7 +108,7 @@ console.log(city);
 
         <div className="chat_box other">
           <div className="other_info">
-              <Link to="/profile" state={{images , name , backImages ,username}} >
+              <Link to="/profile" state={{images , name , backImages ,username, username}} >
                 <span className="profile_img empty">
                   <img src={images} />
                 </span>
@@ -132,18 +132,18 @@ console.log(city);
                               />
                           ))}
 
-                          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
-                          <div>
-                            <img src={attachment} width="50" height="50" alt='' />
-                            <button onClick={onClearAttachment}>remove</button>
-                          </div>
-                        )}
-                        {attachmentUrl && (
+                        {/* {attachmentUrl && (
                         <img src={attachmentUrl} width="50" height="50" alt=''  />
-                        )}
+                        )} */}
                         
           </div>
 
+          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+                          <div className="preview_box">
+                            <img className="preview" src={attachment}alt='' />
+                            <button className="remove" onClick={onClearAttachment}><FontAwesomeIcon icon="fa-solid fa-xmark" /></button>
+                          </div>
+                        )}
 
         <footer>
           <span className="plus_btn">
