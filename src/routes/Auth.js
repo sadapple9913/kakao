@@ -55,6 +55,8 @@ function Auth() {
   };
   return (
     <div className="background">
+      <div className="smile" />
+      <div className="smile__up" />
     <div className="image">
       <form onSubmit={onSubmit} className="Login">
         <input className="email"

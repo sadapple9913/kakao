@@ -135,7 +135,7 @@
   }
   .chat_time_now {
     position: relative;
-    left: -40px;
+    left: -60px;
     bottom: 17px;
     width: 50px;
     opacity: 0.5;
@@ -145,8 +145,8 @@
     margin-bottom: 15px;
     .fix_wrap{
       width: 75%;
-      background: #ffe73a;
-      border: none;
+      background: #fff;
+      border: 1px solid tomato;
       border-radius: 5px;
       padding: 10px 5px;
       font-family: orbitron, sans-serif;
@@ -217,7 +217,7 @@
       left: 50%;
       transform: translateX(-50%);
       width:100%;height: 100%;
-      max-width: 320px; max-height: 400px;
+      max-width: 350px; max-height: 350px;
       border-radius: 20px;
     }
     .remove{

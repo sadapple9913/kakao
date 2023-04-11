@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Chats.scss";
 import LastMessage from "./LastMessage";
-import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { db } from "../fbase";
 
 
@@ -12,25 +12,20 @@ function ChatList({ images, name, id , city , backImages },userObj) {
 
   const [talk, setTalk] = useState("");
   const [talks, setTalks] = useState([]);
+  
+  const[nowDate , setNowDate] = useState("");
 
-  // const q = query(collection(db, "talks"),
-
-  //  where("userName.name", "==", name),
-
-  //  orderBy("createdAt", "desc"));
-  // console.log(name)
-  // const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  //   const newTalks = {};
-  //   querySnapshot.forEach((doc) => {
-  //     const talk = doc.data();
-  //     const chatId = talk.chatId;
-  //     if (!newTalks[chatId]) {
-  //       newTalks[chatId] = talk;
-  //     }
-  //   });
-  //   setTalks(newTalks);
-  // });
-
+ useEffect(() => {
+  async function fetchData() {
+    const q = query(collection(db, "talks"), where("userName.name", "==", name));
+    const querySnapshot = await getDocs(q);
+    const createdAt = querySnapshot.docs[0].data().createdAt;
+    const options = {hour: 'numeric', minute: 'numeric'};
+    const now = new Date(createdAt);
+    setNowDate(now.toLocaleTimeString(undefined, options));
+  }
+  fetchData();
+}, [name]);
 
   return (
     <ul>
@@ -50,7 +45,7 @@ function ChatList({ images, name, id , city , backImages },userObj) {
             </span>
           </span>
           <span className="chats_time">
-            <span>15</span>:<span>33</span>
+            <span>{nowDate}</span>
           </span>
         </Link>
       </li>

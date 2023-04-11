@@ -3,9 +3,68 @@
 div{font-family: Orbitron , sans-serif; }
 .background{
   width: 100%;height: 100%;
-  background: url(../images/4d2d37bcc6a75ebd6f3dc60f6587206a.jpg) no-repeat 90% 15px;
-  background-size: 130px;
+ .smile{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: url(../images/4d2d37bcc6a75ebd6f3dc60f6587206a.jpg) no-repeat 50% 50%;
+  background-size: 100%;
+  animation: smileMove 5s linear infinite;
+ }
 }
+
+// .smile__up{
+//   position: absolute;
+//   top: 150px;
+//   right: 45%;
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   background: url(../images/4d2d37bcc6a75ebd6f3dc60f6587206a.jpg) no-repeat 50% 50%;
+//   background-size: 100%;
+//   animation: smileUpMove 3s linear 0s infinite;
+//  }
+
+ @keyframes smileMove {
+  0% {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  25%{
+    right: 0;
+    top: 840px;
+  }
+  50% {
+    right: 50px;
+    top: 450px;
+
+  }
+  75%{
+    right: 200px;
+    top: 840px;
+
+  }
+  100% {
+    right: 480px;
+    top: 500px;
+    transform: rotate(1800deg);
+  }
+ }
+
+ @keyframes smileUpMove {
+  0% {top:150px
+
+  }
+  50%{
+    top:10px
+  }
+  100% {top: 150px;
+  }
+ }
+
 
 .image{
   position: absolute;

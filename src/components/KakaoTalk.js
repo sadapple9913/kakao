@@ -1,16 +1,17 @@
 import { deleteDoc, doc, updateDoc} from 'firebase/firestore';
 import {db,storage} from '../fbase'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {ref, deleteObject } from "firebase/storage";
 import { FaPen, FaTimes, FaUndoAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
 function KakaoTalk(props) {
-  const {talkObj:{text,id,attachmentUrl},isOwner,} = props;
+  const {talkObj:{text,id,attachmentUrl,createdAt},isOwner,} = props;
   const [editing, setEditing] = useState(false);
   const [newTalk , setNewTalk] = useState(text);
   console.log(props);
+  const[nowDate , setNowDate] = useState(createdAt);
 
   const onDeleteClick = async() =>{
     const ok = window.confirm("삭제하시겠습니까?")
@@ -37,17 +38,25 @@ function KakaoTalk(props) {
     await updateDoc(newTalkRef, {
       text: newTalk,
       createAt : Date.now(),
+      
     });
 
     setEditing(false);
     console.log(newTalkRef);
   }
 
-  const [currentTime, setCurrentTime] = useState(new Date());
+  // const [currentTime, setCurrentTime] = useState(new Date());
 
-  const currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes();
+  // const currentHour = currentTime.getHours();
+  // const currentMinute = currentTime.getMinutes();
 
+  useEffect(() => {
+    let timeStamp = createdAt;
+    const options = {hour: 'numeric', minute: 'numeric'};
+    const now = new Date(timeStamp);
+    setNowDate(now.toLocaleTimeString(undefined, options));
+    console.log("123",timeStamp);
+  },[])
 
   return (
     <div>
@@ -64,9 +73,7 @@ function KakaoTalk(props) {
       ) : (
         <>
         <div className='chat'>
-          <Link to="/Chats" state={text}>
           <h4>{text}</h4>
-          </Link>
         {attachmentUrl && (
         <img src={attachmentUrl} alt=''  />
         )}
@@ -81,7 +88,7 @@ function KakaoTalk(props) {
         )} 
          </div>
             <span className="chat_time_now">
-             {currentHour}:{currentMinute}
+             {nowDate}
             </span>
         </>
       )}
