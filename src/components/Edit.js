@@ -24,7 +24,9 @@ const navigate = useNavigate();
 
 useEffect(() =>{
   // getTweets();
-  const q = query(collection(db,"photo"),orderBy("createdAt" ,"asc"));
+  const q = query(collection(db,"photo"),
+  where("creatorId", "==", userObj.uid),
+  orderBy("createdAt" ,"asc"));
 
     const unsubscribe = onSnapshot(q,(querySnapshot) => {
       const newArray = [];
@@ -78,7 +80,7 @@ const onPhotoSubmit = async (e) => {
     backgroundURL = await getDownloadURL(ref(storage, response.ref));  
     const docRef = await addDoc(collection(db, "photo"), {
       createdAt: Date.now(),
-      creatorId: userObj.uid, // ID of the logged in user
+      creatorId: userObj.uid, 
       backgroundURL: backgroundURL !== "" ? backgroundURL : backgroundURL
     });
     setBackground("");

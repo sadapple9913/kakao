@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { db } from "../fbase";
 
 function StatusMessage({ userObj}) {
   const [myStatus, setMyStatus] = useState("");
   const [status , setStatus] = useState([]);
   useEffect(() => {
-    const q = query(collection(db, "statusMessage"), orderBy("createdAt", "asc"));
+    const q = query(collection(db, "statusMessage"),
+    where("creatorId", "==", userObj.uid), 
+    orderBy("createdAt", "asc"));
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];

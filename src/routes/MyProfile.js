@@ -7,11 +7,13 @@ import {auth,} from '../fbase'
 import Edit from "../components/Edit";
 import {db, storage} from '../fbase'
 import "../styles/MyProfile.scss";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 
 
 function MyProfile({userObj}) {
-  console.log(userObj);
+
+  console.log("user1222->",userObj);
+  
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState("");
   const [status ,setStatus ] = useState("");
@@ -22,9 +24,11 @@ function MyProfile({userObj}) {
     navigate("/", { replace: true });
   };
   
- 
+
 useEffect(() =>{
-  const q = query(collection(db,"photo"),orderBy("createdAt" ,"asc"));
+  const q = query(collection(db,"photo"),
+  where("creatorId", "==", userObj.uid),
+  orderBy("createdAt" ,"asc"));
 
     const unsubscribe = onSnapshot(q,(querySnapshot) => {
       const newArray = [];
@@ -43,7 +47,9 @@ useEffect(() =>{
 
 
 useEffect(() =>{
-const q = query(collection(db,"statusMessage"),orderBy("createdAt" ,"asc"));
+const q = query(collection(db,"statusMessage"),
+where("creatorId", "==", userObj.uid),
+orderBy("createdAt" ,"asc"));
 
 const unsubscribe = onSnapshot(q,(querySnapshot) => {
   const newArray = [];
