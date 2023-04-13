@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { collection, query, onSnapshot, orderBy, where } from "firebase/firestore";
 import {db ,auth} from '../fbase'
-import { update } from "firebase/database";
-import KakaoTalk from "../components/KakaoTalk";
-import { UpdateData } from "firebase/firestore";
-import {async} from "@firebase/util"
+// import { update } from "firebase/database";
+// import KakaoTalk from "../components/KakaoTalk";
+// import { UpdateData } from "firebase/firestore";
+// import {async} from "@firebase/util"
 
 
 function Friends({userObj}) {
@@ -33,22 +33,22 @@ function Friends({userObj}) {
     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
     const datas = response.data
     setDatas(datas);
-    console.log("1123_>",datas); // log the updated data
+    console.log("datas->",datas); // log the updated data
   }
 
-const profilesImages = profiles.map((profile) => profile.images);
-const datasNamesIds = datas.map((profile) => ({
-  id: profile.id,
-  name :profile.name,
-  city : profile.address.city,
-  username : profile.username,
-}));
-
-
-const combinedProfiles = profilesImages.map((image,index) => ({
-  ...datasNamesIds[index],
-  images: image,
-}));
+  const profilesImages = profiles.map((profile) => profile.images);
+  const datasNamesIds = datas.map((profile) => ({
+    id: profile.id,
+    name: profile.name,
+    city: profile.address.city,
+    username: profile.username,
+  }));
+  
+  const combinedProfiles = profilesImages.map((image, index) => ({
+    ...datasNamesIds[index],
+    images: image,
+    backImages: profiles[index].backImages
+  }));
 
 
 const onLogOutClick = () => {
@@ -130,26 +130,23 @@ console.log("newDisplayName ", newDisplayName )
         {/* main_section */}
         <section class="main_section">
         <h2>My Profile</h2>
-        {combinedProfiles.slice(0, 1).map((profile) => (
-                  <My
-                    images={profile.images}
-                    userObj={userObj}
-                  />
-                ))}
-        {/* <My userObj={userObj}/> */}
+        <My 
+          images={userObj.photoURL}
+          userObj={userObj}
+        />
      </section>
-
             <section className="main_section">
             <h2>Friends</h2>
             <ul>
               <li className="Friend_wrap">
-              {combinedProfiles.slice(3, 10).map((profile) => (
+              {combinedProfiles.slice(0, 10).map((profile) => (
                   <User
                     name={profile.name}
                     id={profile.id}
                     images={profile.images}
                     city={profile.city}
                     username={profile.username}
+                    backImages={profile.backImages}
                   />
                 ))}
 

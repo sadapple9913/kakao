@@ -1,10 +1,12 @@
 /* chats.css */
 @import 'common.scss';
 
+
 .Chat_wrap{
-  
-  
-.tab_bar>ul>li:nth-child(2)>a{color: #513736;}
+  height: 104%;
+
+
+.tab_bar>ul>li:nth-child(2)>a{color: #e73446;}
 
 // .tab_bar ul li a.active {
 //   /* active 클래스가 있는 a 태그에 대한 스타일링 */
@@ -24,7 +26,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 7.3%;
+  height: 53px;
   min-height: 53px;
 }
 
@@ -32,9 +34,10 @@
   display: flex;
   justify-content: space-between;
   width: 88%;
-  height: 50%;
+  height: 25px;
   background: #f1f2f4;
   border-radius: 5px;
+
 
   > {
     svg {
@@ -50,6 +53,7 @@
       background-color: transparent;
       border: none;
       padding: 0 15px;
+      height: 25px;
 
       &::placeholder {
         text-align: center;
@@ -103,9 +107,11 @@
     }
 
     .chats_latest {
+      margin-top: 5px;
       font-size: 12px;
       color: #8e9399;
     }
+
   }
 
 
@@ -124,22 +130,23 @@
   right: 20px;
   bottom: 80px;
 
-  > a {
+   div {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 60px;
     height: 60px;
-    background-color: #ffe84c;
+    background-color: #e73446;
     border-radius: 50%;
     box-shadow: 0 2px 6px #0004;
     font-size: 18px;
-    color: #513736;
+    color: #fff;
     transition: color 300ms linear 0s backgound 300ms linear 0s;
 
     &:hover {
-      background: #513736;
-      color: #ffe84c;
+      background: #fff;
+      color: #e73446;
+      border: 1px solid #e73446  ;
     }
   }
 }

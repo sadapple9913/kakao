@@ -55,6 +55,8 @@ function Auth() {
   };
   return (
     <div className="background">
+      <div className="smile" />
+      <div className="smile__up" />
     <div className="image">
       <form onSubmit={onSubmit} className="Login">
         <input className="email"
@@ -84,7 +86,7 @@ function Auth() {
           또는
         </div>
         <button onClick={onSocialClick} name="Google">
-          Google 로그인~
+          Google 로그인
         </button>
       </div>
     </div>

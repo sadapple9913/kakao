@@ -37,7 +37,7 @@ function ChattingHeader() {
       <div className="title_bar">
       <h1>{name}</h1>
       <div className="left_item">
-        <Link to="/Chats">
+        <Link to="/Chats" state={{name}}>
         <a><FaAngleLeft/></a>
         </Link>
         </div>

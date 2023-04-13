@@ -1,1 +1,204 @@
 @import 'common.scss';
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed&display=swap');
+
+.profile_wrap{
+
+  Header {
+    background: transparent;
+  }
+  
+  
+  .title_bar > .left_item > a {
+    opacity: 1;
+    font-size: 20px;
+  }
+  
+  .profile_main {
+    height: calc(100% - 10px);
+  }
+  
+  .background {
+    width: 100%;
+    height: 65%;
+    // background: url(../images/bg_default.png) no-repeat 0 0;
+    // background-size: cover;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .photoProfile{
+      display: block;
+      position: absolute;
+      bottom : 370px;
+      left: 15px;
+      font-size: 18px;
+      width: 30px;
+      .photoSelect{
+        display: block;
+        width: 0px;
+        height: 0px;
+      }
+      .photofile{
+      display: none;
+
+      }
+    }
+  }
+  
+  .profile {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  
+  .Profile_profile_img {
+    position: absolute;
+    left: 50%;
+    top: -65px;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+
+  .profileName_wrap_edit{
+    display: inline-block;
+    position: relative;
+    top: 100px;
+    left: 52.5%;
+    transform: translateX(-50%);
+    text-align: center;
+
+    .profileName{
+      width: 150px;
+      background: transparent;
+      padding: 3px 0;
+      margin-left:20px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #333 ;
+      text-align: center;
+      font-family: orbitron,sans-serif;
+      font-size: 16px;
+  }
+    .statusMessage_edit{
+      width: 200px;
+      background: transparent;
+      padding: 3px 0;
+      margin-left:20px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #333 ;
+      text-align: center;
+      font-family: orbitron,sans-serif;
+      font-size: 16px;
+    }
+    .submit_name{
+      position: relative;
+      left: 0px;
+      background: transparent;
+      border: none;
+      font-family: orbitron,sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition:all 0.3s ease 0s;
+      &:hover{
+        color: #e73446;
+      }
+    }
+  }
+
+  .statusMessage_wrap{
+    position: relative;
+    bottom: 50px;
+  }
+
+    .select{
+      display: block;
+      position: relative;
+      bottom: 82px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: transparent;
+      .file{
+        width: 0;height: 0;
+      }
+      .Icon_wrap{
+        display: block;
+        position: relative;
+        top: 70px;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: rgba(255,255,255,1);
+        .Icon{
+          position: relative;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .preview{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      font-family: 'Sofia Sans Semi Condensed' , sans-serif;
+      img{
+        position: relative;
+        left: 50%;
+        top: 150px;
+        transform: translateX(-50%);
+        width: 100%; max-width: 380px;
+        height: 100%;max-height: 380px;
+        border-radius: 50%;
+      }
+      .remove{
+        position: relative;
+        left: 20px;
+        border: none;
+        background: transparent;
+        color: #fff;
+        font-size: 25px;
+      }
+      .submit_image{
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        color: #fff;
+        font-size: 16px;
+        font-family: orbitron,sans-serif;
+      }
+    }
+
+    .back_button{
+      position: absolute;
+      bottom: 310px;
+      right: 15px;
+      border: none;
+      background: transparent;
+      font-family: orbitron,sans-serif;
+      font-weight: bold;
+
+    }
+
+   
+}
+ 

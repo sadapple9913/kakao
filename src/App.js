@@ -11,12 +11,21 @@ import Friends from "./routes/Friends";
 import My from "./components/My";
 import MyProfile from "./routes/MyProfile";
 import Edit from "./components/Edit";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import ChatList from "./components/ChatList";
+import Nav from "./components/Tab";
+
+library.add(fas, faFontAwesome,)
+
 
 function App() {
   const auth = getAuth();
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState('');
+  const [name, setName] = useState('');
 
 
   useEffect(() => {
@@ -37,12 +46,12 @@ function App() {
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route exact path="/" element={<Friends userObj={userObj}   />} />
+            <Route exact path="/" element={<Friends userObj={userObj} />} />
           </>
         ) : (
           <Route exact path="/" element={<Auth />} />
         )}
-        <Route path="/Chats" element={<Chats />} />
+        <Route path="/Chats" element={<Chats userObj={userObj} />} />
         <Route path="/Find" element={<Find />} />
         <Route path="/More" element={<More userObj={userObj} />} />
         <Route path="/Profile" element={<Profile userObj={userObj} />} />
@@ -51,6 +60,7 @@ function App() {
         <Route path="/Chatting" element={<Chatting isLoggedIn={isLoggedIn} userObj={userObj}/>} />
         <Route path="/My" element={<My userObj={userObj} /> } />
         <Route path="/Edit" element={<Edit userObj={userObj} /> } />
+        <Route path="/ChatList" element={<ChatList  userObj={userObj}/> } />
       </Routes>
     </BrowserRouter>
   );

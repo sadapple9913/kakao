@@ -8,13 +8,15 @@ import { querySnapshot, addDoc, getDocs, onSnapshot, orderBy, query, collection,
 import { v4 as uuidv4 } from 'uuid';
 import {db,storage} from '../fbase'
 import {ref, uploadString, getDownloadURL } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Chatting({ userObj }) {
   const location = useLocation(); //react-router-dom에서 제공하는 함수
   console.log("location ->",location);
 
 
-  const { name, images, id, city } = location.state;
+  const { name, images, id, city , backImages, username} = location.state;
+
 console.log(city);
   console.log(`userObj->`,userObj);
 
@@ -23,8 +25,7 @@ console.log(city);
   const[attachment ,setAttachment ] = useState("");
 
   useEffect(() =>{
-    // getTweets();
-    const q = query(collection(db,"talks"), where("userName.name", "==", name), orderBy("createdAt" ,"asc"));
+    const q = query(collection(db,"talks"), where("userName.name", "==", name), where("creatorId", "==", userObj.uid) ,orderBy("createdAt" ,"asc"));
 
       const unsubscribe = onSnapshot(q,(querySnapshot) => {
         const newArray = [];
@@ -51,14 +52,13 @@ console.log(city);
         const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`); //경로지정
         const response = await uploadString(storageRef, attachment, 'data_url');
         console.log('reponse ->',response)
-        attachmentUrl = await getDownloadURL(ref(storage, response.ref));//https:
+        attachmentUrl = await getDownloadURL(ref(storage, response.ref));
       }
-
       const docRef = await addDoc(collection(db, "talks"), {
         text: talk,
         userName:{name},
         createdAt: Date.now(),
-        creatorId: userObj.uid, // ID of the logged in user
+        creatorId: userObj.uid, 
         attachmentUrl
       });
       console.log("Document written with ID: ", docRef.id);
@@ -90,9 +90,10 @@ console.log(city);
   }
 
   return (
-    <div className="Chatting_wrap">
-      <ChattingHeader />
 
+    <div className="Chatting_wrap" >
+      <ChattingHeader />
+      <Link to="/ChatList " state={{ images, name, id ,city , backImages ,userObj}}/>
       <div className="chatting_main">
         <span className="date_info">{id}</span>
 
@@ -107,7 +108,7 @@ console.log(city);
 
         <div className="chat_box other">
           <div className="other_info">
-              <Link to="/profile" state={{images , name}} >
+              <Link to="/profile" state={{images , name , backImages ,username, username}} >
                 <span className="profile_img empty">
                   <img src={images} />
                 </span>
@@ -131,39 +132,34 @@ console.log(city);
                               />
                           ))}
 
-                          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
-                          <div>
-                            <img src={attachment} width="50" height="50" alt='' />
-                            <button onClick={onClearAttachment}>remove</button>
-                          </div>
-                        )}
-                        {attachmentUrl && (
+                        {/* {attachmentUrl && (
                         <img src={attachmentUrl} width="50" height="50" alt=''  />
-                        )}
-
-            {/* <span className="chat_time">
-              <span>15</span>:<span>33</span>
-            </span> */}
+                        )} */}
+                        
           </div>
 
+          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+                          <div className="preview_box">
+                            <img className="preview" src={attachment}alt='' />
+                            <button className="remove" onClick={onClearAttachment}><FontAwesomeIcon icon="fa-solid fa-xmark" /></button>
+                          </div>
+                        )}
 
         <footer>
           <span className="plus_btn">
-            <a href="#">
               <FaPlus />
-            </a>
           </span>
           <form action="/" method="post" className="from" onSubmit={onSubmit}>
             <fieldset className="text_box">
               <legend className="blind">채팅입력창</legend>
-                <input
-                  type='text'
-                  value={talk}
-                  onChange={onChange}
-                  placeholder=""
-                />
-                <input type='file' accept='image/*' onChange={onFileChange} />
-                <input type='submit' value={'send'} />
+                <input className="sending_message" type='text' value={talk} onChange={onChange} placeholder="" />
+                <label htmlFor="file_chat" className="file_up_chat">
+                <input type='file' accept='image/*' onChange={onFileChange} id="file_chat" style={{opacity:0}}/>
+                </label>  
+                <label htmlFor="sending" className="sending">
+                <FontAwesomeIcon icon="fa-solid fa-arrow-up" />
+                <input type='submit' value={'send'} id="sending" style={{opacity:0}}/>
+                </label>
             </fieldset>
           </form>
         </footer>

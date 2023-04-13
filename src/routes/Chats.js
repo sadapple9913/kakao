@@ -4,12 +4,12 @@ import Tab from "../components/Tab";
 import { FaSistrix, FaComment } from "react-icons/fa";
 import ChatList from "../components/ChatList";
 import profiles from "../data/profiles.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/Chats.scss";
 
-function Chats() {
+function Chats({name , userObj}) {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
@@ -20,20 +20,21 @@ function Chats() {
     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
     const datas = response.data
     setDatas(datas);
-    console.log(datas); // log the updated data
+    console.log(datas);
   }
 
-  const profilesImages = profiles.slice(1, 10).map((profile) => profile.images);
-  const datasNamesIds = datas.slice(1, 10).map((profile) => ({
-    name: profile.name,
+  const profilesImages = profiles.map((profile) => profile.images);
+  const datasNamesIds = datas.map((profile) => ({
     id: profile.id,
-    city : profile.address.city,
-    username : profile.username,
+    name: profile.name,
+    city: profile.address.city,
+    username: profile.username,
   }));
-
+  
   const combinedProfiles = profilesImages.map((image, index) => ({
     ...datasNamesIds[index],
     images: image,
+    backImages: profiles[index].backImages
   }));
 
   return (
@@ -61,11 +62,14 @@ function Chats() {
           </div>
           {combinedProfiles.map((profile) => (
             <ChatList
+              key={profile.key}
               name={profile.name}
               id={profile.id}
               images={profile.images}
               city={profile.city}
               username={profile.username}
+              backImages={profile.backImages}
+              userObj={userObj}
             />
           ))}
         </section>
@@ -73,9 +77,9 @@ function Chats() {
 
       <div className="floating">
         <div className="chat_fa_btn">
-          <a href="#">
+          <div>
             <FaComment />
-          </a>
+          </div>
         </div>
       </div>
 

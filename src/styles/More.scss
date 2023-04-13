@@ -2,7 +2,7 @@
 
 .more_wrap{
 
-  .tab_bar>ul>li:nth-child(4)>a{color: #513736;}
+  .tab_bar>ul>li:nth-child(4)>a{color: #e73446;}
 
   .main {
     height: 85.8%;
@@ -32,6 +32,12 @@
         font-size: 18px;
         font-weight: bold;
         margin-top: 10px;
+      }
+
+      .statusMessage_my{
+        position: absolute;
+        top: 105px;
+        left: 80px;
       }
     }
   }
@@ -64,14 +70,12 @@
       > li {
         overflow: hidden;
         flex: 1;
-  
-        > a {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          color: #513736;
-          font-weight: bold;
-          transition: transform 300ms linear 0s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #513736;
+        font-weight: bold;
+        transition: transform 300ms linear 0s;
   
           &:hover {
             transform: scale(1.05);
@@ -80,7 +84,7 @@
           > svg {
             font-size: 30px;
             margin-bottom: 10px;
-          }
+          
         }
       }
     }
@@ -121,7 +125,7 @@
           width: 50%;
           height: 45px;
   
-          > a > svg {
+          > svg {
             position: relative;
             top: 3px;
             margin: 0 15px;
@@ -141,14 +145,11 @@
       display: flex;
   
       > li {
-        width: 75px;
-  
-        > a {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-        }
+        width:75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
     }
   

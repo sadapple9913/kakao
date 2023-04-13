@@ -1,7 +1,7 @@
 @import 'common.scss';
 
 .profile_wrap{
-
+position: relative;
  width: 100%; height: 100%;
 
   Header {
@@ -15,14 +15,14 @@
   }
   
   .profile_main {
-    height: calc(100% - 10px);
+    height: 100%;
   }
   
   .background {
     width: 100%;
     height: 65%;
-    // background: url(../images/bg_default.png) no-repeat 0 0;
-    // background-size: cover;
+    background: url(../images/bg_default.png) no-repeat 0 0;
+    background-size: cover;
     img{
       width: 100%;
       height: 100%;
@@ -59,7 +59,7 @@
   
   .profile_name {
     margin-top: 15px;
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .profile_cont input {
@@ -70,7 +70,11 @@
     text-align: center;
     border: none;
   }
-  
+  .statusMessage{
+    margin-top: 15px;
+    font-size: 14px;
+  }
+    
   .profile_menu {
     display: flex;
   
@@ -101,28 +105,17 @@
   }
 
   .LogOut{
+    display: block;
     position: absolute;
-    bottom: 320px;
-    right: 5px;
+    bottom: 15px;
+    left: 10px;
     border: none;
+    text-align: right;
     background: transparent;
     font-family: orbitron,sans-serif;
     font-size: 10px;
     font-weight: bold;
+    cursor: pointer;
   }
-  .container{
 
-    .profileName{
-        display: block;
-        position: absolute;
-        bottom: 95px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #fff;
-        border-radius: 10px;
-        padding: 3px 0;
-        outline: 1px solid tomato;
-    }
-    }
-    
 }
