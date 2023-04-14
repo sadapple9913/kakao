@@ -26,14 +26,9 @@ console.log(city);
   const[attachment ,setAttachment ] = useState("");
 
   useEffect(() =>{
-<<<<<<< HEAD
+
     if (!name || !userObj ) return;
-=======
-<<<<<<< HEAD
-    if (!name || !userObj ) return;
-=======
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
+
     const q = query(collection(db,"talks"), where("userName.name", "==", name), where("creatorId", "==", userObj.uid) ,orderBy("createdAt" ,"asc"));
 
       const unsubscribe = onSnapshot(q,(querySnapshot) => {
@@ -98,40 +93,17 @@ console.log(city);
     setAttachment("");
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
   useEffect(() => {
     // chats state가 변경될 때마다 스크롤을 맨 아래로 이동
     talksRef.current.scrollIntoView({ behavior: "smooth" });
   }, [talks]);
 
-//  const onAddChat = (talks) => {
-//     setTalks((prevTalks) => [...prevTalks, talks]);
-//   };
-
-<<<<<<< HEAD
-=======
   return (
 
     <div className="Chatting_wrap" >
       <ChattingHeader />
       <Link to="/ChatList " state={{ images, name, id ,city , backImages ,userObj}}/>
       <div className="chatting_main" >
-=======
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
-  return (
-
-    <div className="Chatting_wrap" >
-      <ChattingHeader />
-      <Link to="/ChatList " state={{ images, name, id ,city , backImages ,userObj}}/>
-<<<<<<< HEAD
-      <div className="chatting_main" >
-=======
-      <div className="chatting_main">
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
         <span className="date_info">{id}</span>
 
         <div className="chat_box my">
@@ -168,21 +140,8 @@ console.log(city);
                               isOwner={talk.creatorId === userObj.uid}
                               />
                           ))}
-<<<<<<< HEAD
               <div ref={talksRef} /> {/* 스크롤 대상이 되는 엘리먼트 */}
-=======
-<<<<<<< HEAD
-              <div ref={talksRef} /> {/* 스크롤 대상이 되는 엘리먼트 */}
-=======
-
-                        {/* {attachmentUrl && (
-                        <img src={attachmentUrl} width="50" height="50" alt=''  />
-                        )} */}
-                        
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
           </div>
-
           {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
                           <div className="preview_box">
                             <img className="preview" src={attachment}alt='' />

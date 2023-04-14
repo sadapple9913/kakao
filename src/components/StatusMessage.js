@@ -6,14 +6,7 @@ function StatusMessage({ userObj}) {
   const [myStatus, setMyStatus] = useState("");
   const [status , setStatus] = useState([]);
   useEffect(() => {
-<<<<<<< HEAD
     if (!status || !userObj || !userObj.uid) return;
-=======
-<<<<<<< HEAD
-    if (!status || !userObj || !userObj.uid) return;
-=======
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
     const q = query(collection(db, "statusMessage"),
     where("creatorId", "==", userObj.uid), 
     orderBy("createdAt", "asc"));
@@ -25,15 +18,7 @@ function StatusMessage({ userObj}) {
       });
       setMyStatus(newArray);
     });
-<<<<<<< HEAD
   }, [status,userObj]);
-=======
-<<<<<<< HEAD
-  }, [status,userObj]);
-=======
-  }, []);
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
 
   const onChange = (e) => {
     e.preventDefault();

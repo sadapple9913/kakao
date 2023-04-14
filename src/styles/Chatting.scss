@@ -76,11 +76,53 @@
     align-items: flex-end;
     max-width: 250px;
     margin-right: 10px;
-<<<<<<< HEAD
     padding-bottom: 60px;
-=======
-<<<<<<< HEAD
-    padding-bottom: 60px;
+    .chat_time_my{
+      position: relative;
+      right: 260px;
+      color: #888;
+    }
+    .chat {
+      position: relative;
+      background: rgb(250, 132, 112);
+      max-width: 280px;
+      overflow-wrap: break-word;
+
+      .delelte_btn{
+        position:absolute;
+        left: -45px;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        font-size: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        svg{
+         position: relative;
+         left: 50%;
+         transform: translateX(-50%);
+        }
+
+      }
+      .fix_btn{
+        position:absolute;
+        left: -25px;
+        top: 7px;
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        svg{
+         position: relative;
+         left: 50%;
+         transform: translateX(-50%);
+        }
+      }
+
+    }
  
     .chat_time_my{
       position: relative;
@@ -128,57 +170,7 @@
       }
 
     }
-=======
 
->>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
- 
-    .chat_time_my{
-      position: relative;
-      right: 260px;
-      color: #888;
-    }
-    .chat {
-      position: relative;
-      background: rgb(250, 132, 112);
-      max-width: 280px;
-      overflow-wrap: break-word;
-
-      .delelte_btn{
-        position:absolute;
-        left: -45px;
-        top: 5px;
-        width: 15px;
-        height: 15px;
-        font-size: 16px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        svg{
-         position: relative;
-         left: 50%;
-         transform: translateX(-50%);
-        }
-
-      }
-      .fix_btn{
-        position:absolute;
-        left: -25px;
-        top: 7px;
-        width: 15px;
-        height: 15px;
-        font-size: 12px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        svg{
-         position: relative;
-         left: 50%;
-         transform: translateX(-50%);
-        }
-      }
-
-    }
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
     img{
       margin-top: 10px;
       width: 100%; max-width: 280px;

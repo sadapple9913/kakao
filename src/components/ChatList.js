@@ -15,7 +15,6 @@ function ChatList({  images, name, id , city , backImages  , userObj}) {
   
   const[nowDate , setNowDate] = useState("");
 
-<<<<<<< HEAD
   useEffect(() => {
     async function fetchData() {
       try {
@@ -42,7 +41,6 @@ function ChatList({  images, name, id , city , backImages  , userObj}) {
     }
     fetchData();
   }, [name]);
-=======
   useEffect(() => {
     async function fetchData() {
       try {
@@ -69,7 +67,6 @@ function ChatList({  images, name, id , city , backImages  , userObj}) {
     }
     fetchData();
   }, [name]);
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
 
   return (
     <ul>
