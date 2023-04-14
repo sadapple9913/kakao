@@ -11,6 +11,17 @@ import { collection, onSnapshot, orderBy, query, where } from "firebase/firestor
 
 
 function MyProfile({userObj}) {
+<<<<<<< HEAD
+
+  console.log("user1222->",userObj);
+  
+  const navigate = useNavigate();
+  const [profilePhoto, setProfilePhoto] = useState("");
+  const [status ,setStatus ] = useState("");
+  const [myStatus, setMyStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+=======
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
 
   console.log("user1222->",userObj);
   
@@ -29,6 +40,10 @@ function MyProfile({userObj}) {
     navigate("/", { replace: true });
   };
   
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
   useEffect(() => {
     if (!userObj) return;
     const photoQ = query(
@@ -67,6 +82,48 @@ function MyProfile({userObj}) {
   
     return () => unsubscribes.forEach((unsubscribe) => unsubscribe());
   }, [userObj]);
+<<<<<<< HEAD
+=======
+=======
+
+useEffect(() =>{
+  const q = query(collection(db,"photo"),
+  where("creatorId", "==", userObj.uid),
+  orderBy("createdAt" ,"asc"));
+
+    const unsubscribe = onSnapshot(q,(querySnapshot) => {
+      const newArray = [];
+      querySnapshot.forEach((doc) =>{
+        newArray.push({...doc.data(), id:doc.id});
+        console.log("newA->",newArray);
+      });
+      if (newArray.length > 0) { // 배열이 비어있는 경우 체크
+        const lastBackgroundUrl = newArray[newArray.length - 1].backgroundURL;
+        setProfilePhoto(lastBackgroundUrl);
+      } else {
+        setProfilePhoto(""); // 비어있는 경우 빈 문자열("")을 상태값으로 설정
+      }
+    });
+},[]);
+
+
+useEffect(() =>{
+const q = query(collection(db,"statusMessage"),
+where("creatorId", "==", userObj.uid),
+orderBy("createdAt" ,"asc"));
+
+const unsubscribe = onSnapshot(q,(querySnapshot) => {
+  const newArray = [];
+  querySnapshot.forEach((doc) =>{
+    newArray.push({...doc.data(), id:doc.id});
+    console.log("new->",newArray);
+  });
+  setMyStatus(newArray);
+});
+},[]);
+
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
 
 
   return (
@@ -80,10 +137,22 @@ function MyProfile({userObj}) {
     <div className="profile_main">
     <section className="background">
         <h2 className="blind">My profile background image</h2>
+<<<<<<< HEAD
       {profilePhoto && (
         <img src={profilePhoto} alt="Profile image" />
       )}
     </section>
+=======
+<<<<<<< HEAD
+      {profilePhoto && (
+        <img src={profilePhoto} alt="Profile image" />
+      )}
+    </section>
+=======
+        <img src={profilePhoto} alt="Profile image" />
+      </section>
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
 
         <section className="profile">
           <h2 className="blind">My profile info</h2>
@@ -94,6 +163,14 @@ function MyProfile({userObj}) {
           </div>
           <div className="profile_cont">
             <span className="profile_name">{userObj.displayName}</span>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+            {/* <span className="statusMessage">{status}</span> */}
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
             {myStatus.length > 0 && (
                 <span className="statusMessage">{myStatus[myStatus.length - 1].statusMessage}</span>
               )}

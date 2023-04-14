@@ -1,7 +1,15 @@
 import React from 'react'
 import Header from '../components/Header'
 import Tab from '../components/Tab'
+<<<<<<< HEAD
 import {FaRegSmileBeam,FaInfoCircle,FaUtensils,FaTv,FaPencilAlt,FaGraduationCap,FaWonSign,FaVideo} from "react-icons/fa";
+=======
+<<<<<<< HEAD
+import {FaRegSmileBeam,FaInfoCircle,FaUtensils,FaTv,FaPencilAlt,FaGraduationCap,FaWonSign,FaVideo} from "react-icons/fa";
+=======
+import {FaRegComment,FaRegSmileBeam,FaPaintBrush,FaRegHandPeace,FaUserAlt,FaInfoCircle,FaUtensils,FaHome,FaTv,FaPencilAlt,FaGraduationCap,FaArchway,FaWonSign,FaVideo} from "react-icons/fa";
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import My from '../components/My';
 import '../styles/More.scss'
@@ -15,6 +23,13 @@ function More({userObj}) {
     <section className="user_info">
       <h2 className="blind">사용자 정보</h2>
         <My userObj={userObj} />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      {/* <span className="chat_img"><FaRegComment /></span> */}
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
     </section>
 
     <section className="user_menu">

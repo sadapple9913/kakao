@@ -23,7 +23,15 @@ const [profilePhoto, setProfilePhoto] = useState("");
 const navigate = useNavigate();
 
 useEffect(() =>{
+<<<<<<< HEAD
   if (!userObj) return;
+=======
+<<<<<<< HEAD
+  if (!userObj) return;
+=======
+  // getTweets();
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
   const q = query(collection(db,"photo"),
   where("creatorId", "==", userObj.uid),
   orderBy("createdAt" ,"asc"));
@@ -41,7 +49,15 @@ useEffect(() =>{
         setProfilePhoto(""); // 비어있는 경우 빈 문자열("")을 상태값으로 설정
       }
     });
+<<<<<<< HEAD
 },[userObj]);
+=======
+<<<<<<< HEAD
+},[userObj]);
+=======
+},[]);
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
 
   const onChange = (e) =>{
     e.preventDefault();
@@ -149,9 +165,19 @@ const onPhotoSubmit = async (e) => {
     <div className="profile_main">
       <section className="background">
         <h2 className="blind">My profile background image</h2>
+<<<<<<< HEAD
         {profilePhoto && (
         <img src={profilePhoto} alt="background image" />
         )}
+=======
+<<<<<<< HEAD
+        {profilePhoto && (
+        <img src={profilePhoto} alt="background image" />
+        )}
+=======
+        <img src={profilePhoto} alt="background image" />
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
         <from onSubmit={onPhotoSubmit} className="photoProfile" >
           <label className="photoSelect" htmlFor="attach-photofile">
           <span className="Icon_wrap">
@@ -165,9 +191,20 @@ const onPhotoSubmit = async (e) => {
       <section className="profile">
           <h2 className="blind">My profile info</h2>
           <div className="Profile_profile_img empty">
+<<<<<<< HEAD
             {userObj.photoURL && (
             <img src={userObj.photoURL} alt="Profile image" />
             )}
+=======
+<<<<<<< HEAD
+            {userObj.photoURL && (
+            <img src={userObj.photoURL} alt="Profile image" />
+            )}
+=======
+            <img src={userObj.photoURL} alt="Profile image" />
+            <images />
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
           </div>
           </section>
 
@@ -176,6 +213,13 @@ const onPhotoSubmit = async (e) => {
             <div className="profileName_wrap_edit">
             <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder={newDisplayName}/>
             <button type="submit" className="submit_name">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            {/* <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> */}
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
             done
             </button>
             </div>

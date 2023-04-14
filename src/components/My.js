@@ -15,7 +15,14 @@ function My({userObj , images}) {
     const [myStatus, setMyStatus] = useState("");
 
     useEffect(() =>{
+<<<<<<< HEAD
       if (!userObj) return;
+=======
+<<<<<<< HEAD
+      if (!userObj) return;
+=======
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
       const q = query(collection(db,"statusMessage"),
       where("creatorId", "==", userObj.uid),orderBy("createdAt" ,"asc"));
       
@@ -27,7 +34,15 @@ function My({userObj , images}) {
         });
         setMyStatus(newArray);
       });
+<<<<<<< HEAD
       },[userObj]);
+=======
+<<<<<<< HEAD
+      },[userObj]);
+=======
+      },[]);
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+>>>>>>> 68f18746a111680f3b6a3653ff3d10ed4391bdad
       
 
   return (
