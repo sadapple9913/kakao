@@ -113,7 +113,6 @@ console.log("newDisplayName ", newDisplayName )
       <Header />
 
       <main className="main">
-        {/* search_box */}
         <form className="search_box">
           <fieldset className="search_inner">
             <legend className="blind">검색창</legend>
@@ -126,8 +125,6 @@ console.log("newDisplayName ", newDisplayName )
             />
           </fieldset>
         </form>
-        {/* //search_box */}
-        {/* main_section */}
         <section class="main_section">
         <h2>My Profile</h2>
         <My 

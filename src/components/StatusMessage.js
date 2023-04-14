@@ -6,6 +6,7 @@ function StatusMessage({ userObj}) {
   const [myStatus, setMyStatus] = useState("");
   const [status , setStatus] = useState([]);
   useEffect(() => {
+    if (!status || !userObj || !userObj.uid) return;
     const q = query(collection(db, "statusMessage"),
     where("creatorId", "==", userObj.uid), 
     orderBy("createdAt", "asc"));
@@ -17,7 +18,7 @@ function StatusMessage({ userObj}) {
       });
       setMyStatus(newArray);
     });
-  }, []);
+  }, [status,userObj]);
 
   const onChange = (e) => {
     e.preventDefault();

@@ -35,9 +35,11 @@
   .chatting_main {
     display: flex;
     flex-direction: column;
-    height: calc(100%  - 10px);
+    height: auto;
+    min-height: 100%;
     padding-top: 64px;
-    background: #fff;
+    background: url(../images/25a8d281f903d34084abedd24da870e0.jpg) no-repeat 0 0;
+    background-size: cover;
   }
   
   .date_info {
@@ -74,9 +76,13 @@
     align-items: flex-end;
     max-width: 250px;
     margin-right: 10px;
-
+    padding-bottom: 60px;
  
-
+    .chat_time_my{
+      position: relative;
+      right: 260px;
+      color: #888;
+    }
     .chat {
       position: relative;
       background: rgb(250, 132, 112);

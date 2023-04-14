@@ -13,8 +13,9 @@ function Chats({name , userObj}) {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
+    if (!userObj) return;
     getDatas();
-  }, []);
+  }, [userObj]);
 
   const getDatas = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/users');

@@ -15,6 +15,7 @@ function My({userObj , images}) {
     const [myStatus, setMyStatus] = useState("");
 
     useEffect(() =>{
+      if (!userObj) return;
       const q = query(collection(db,"statusMessage"),
       where("creatorId", "==", userObj.uid),orderBy("createdAt" ,"asc"));
       
@@ -26,7 +27,7 @@ function My({userObj , images}) {
         });
         setMyStatus(newArray);
       });
-      },[]);
+      },[userObj]);
       
 
   return (

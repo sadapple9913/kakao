@@ -87,7 +87,7 @@ function KakaoTalk(props) {
             </span>
         </>
       )}
-      {/*  */}
+
 
     </div> 
   )
