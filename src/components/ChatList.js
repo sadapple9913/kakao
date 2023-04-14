@@ -6,26 +6,41 @@ import { collection, getDocs, onSnapshot, orderBy, query, where } from "firebase
 import { db } from "../fbase";
 
 
-function ChatList({ images, name, id , city , backImages },userObj) {
+function ChatList({  images, name, id , city , backImages  , userObj}) {
 
   console.log("1233251",name);
-
+  console.log("userObj아니좀되라 ㅅㅂ->",userObj);
   const [talk, setTalk] = useState("");
   const [talks, setTalks] = useState([]);
   
   const[nowDate , setNowDate] = useState("");
 
- useEffect(() => {
-  async function fetchData() {
-    const q = query(collection(db, "talks"), where("userName.name", "==", name));
-    const querySnapshot = await getDocs(q);
-    const createdAt = querySnapshot.docs[0].data().createdAt;
-    const options = {hour: 'numeric', minute: 'numeric'};
-    const now = new Date(createdAt);
-    setNowDate(now.toLocaleTimeString(undefined, options));
-  }
-  fetchData();
-}, [name]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const q = query(
+          collection(db, "talks"),
+          where("creatorId", "==", userObj.uid),
+          where("userName.name", "==", name)
+        );
+        const querySnapshot = await getDocs(q);
+        const docs = querySnapshot.docs;
+        if (docs.length > 0) {
+          const createdAt = docs[0].data().createdAt;
+          if (createdAt) {
+            const options = { hour: 'numeric', minute: 'numeric' };
+            const now = new Date(createdAt);
+            setNowDate(now.toLocaleTimeString(undefined, options));
+          }
+        } else {
+          console.log("No documents found!");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, [name]);
 
   return (
     <ul>
@@ -38,9 +53,10 @@ function ChatList({ images, name, id , city , backImages },userObj) {
             <span className="chats_name">{name}</span>
             <span className="chats_latest">
               <LastMessage
-                 talkObj={talks[id] ? talks[id] : null}
+                 talkObj={talks[id]}
                  isOwner={talks[id]?.creatorId === userObj.uid}
                  name={name}
+                 userObj={userObj}
               />
             </span>
           </span>

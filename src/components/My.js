@@ -6,7 +6,7 @@ import { signOut, } from "firebase/auth";
 import {auth,} from '../fbase'
 import Edit from "../components/Edit";
 import {db, storage} from '../fbase'
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import "../styles/Friends.scss";
 
 
@@ -15,7 +15,9 @@ function My({userObj , images}) {
     const [myStatus, setMyStatus] = useState("");
 
     useEffect(() =>{
-      const q = query(collection(db,"statusMessage"),orderBy("createdAt" ,"asc"));
+      if (!userObj) return;
+      const q = query(collection(db,"statusMessage"),
+      where("creatorId", "==", userObj.uid),orderBy("createdAt" ,"asc"));
       
       const unsubscribe = onSnapshot(q,(querySnapshot) => {
         const newArray = [];
@@ -25,12 +27,11 @@ function My({userObj , images}) {
         });
         setMyStatus(newArray);
       });
-      },[]);
+      },[userObj]);
       
 
- console.log(userObj);
   return (
-    <Link to="/MyProfile" state={{ images }}>
+    <Link to="/MyProfile" images={images} userObj={userObj}>
       <ul>
         <li className="friend_wrap">
           <span class="Profile_img empty">

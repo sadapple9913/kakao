@@ -5,17 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { db } from '../fbase'
 
 function LastMessage(props) {
-
-  const { chatId, isOwner ,name ,createdAt } = props;
+  
+  const { chatId, isOwner ,name , userObj } = props;
   const [lastTalk, setLastTalk] = useState("");
-
+  console.log("제발제발",userObj);
 
   useEffect(() => {
     if (!name) return;
     const q = query(collection(db, "talks"), 
-
     where("userName.name", "==", name), 
-    
+    where("creatorId", "==", userObj.uid),
     orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newTalks = {};
@@ -26,7 +25,7 @@ function LastMessage(props) {
           newTalks[chatId] = talk;
         }
       });
-      setLastTalk(newTalks[chatId]?.text || (newTalks[chatId]?.attachmentUrl &&  "사진"));
+      setLastTalk(newTalks[chatId]?.text || (newTalks[chatId]?.attachmentUrl &&  <><FontAwesomeIcon className="Icon" icon="fa-solid fa-camera-retro" /> 사진</>));
     });
     return unsubscribe;
   }, [name, chatId, isOwner]);

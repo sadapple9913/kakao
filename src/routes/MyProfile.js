@@ -7,75 +7,90 @@ import {auth,} from '../fbase'
 import Edit from "../components/Edit";
 import {db, storage} from '../fbase'
 import "../styles/MyProfile.scss";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 
 
 function MyProfile({userObj}) {
-  console.log(userObj);
+
+  console.log("user1222->",userObj);
+  
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState("");
   const [status ,setStatus ] = useState("");
   const [myStatus, setMyStatus] = useState("");
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const onLogOutClick = () => {
     signOut(auth);
     navigate("/", { replace: true });
   };
   
- 
-useEffect(() =>{
-  const q = query(collection(db,"photo"),orderBy("createdAt" ,"asc"));
-
-    const unsubscribe = onSnapshot(q,(querySnapshot) => {
-      const newArray = [];
-      querySnapshot.forEach((doc) =>{
-        newArray.push({...doc.data(), id:doc.id});
-        console.log("newA->",newArray);
-      });
-      if (newArray.length > 0) { // 배열이 비어있는 경우 체크
-        const lastBackgroundUrl = newArray[newArray.length - 1].backgroundURL;
-        setProfilePhoto(lastBackgroundUrl);
-      } else {
-        setProfilePhoto(""); // 비어있는 경우 빈 문자열("")을 상태값으로 설정
-      }
-    });
-},[]);
-
-
-useEffect(() =>{
-const q = query(collection(db,"statusMessage"),orderBy("createdAt" ,"asc"));
-
-const unsubscribe = onSnapshot(q,(querySnapshot) => {
-  const newArray = [];
-  querySnapshot.forEach((doc) =>{
-    newArray.push({...doc.data(), id:doc.id});
-    console.log("new->",newArray);
-  });
-  setMyStatus(newArray);
-});
-},[]);
-
+  useEffect(() => {
+    if (!userObj) return;
+    const photoQ = query(
+      collection(db, "photo"),
+      where("creatorId", "==", userObj.uid),
+      orderBy("createdAt", "asc")
+    );
+  
+    const statusQ = query(
+      collection(db, "statusMessage"),
+      where("creatorId", "==", userObj.uid),
+      orderBy("createdAt", "asc")
+    );
+  
+    const unsubscribes = [
+      onSnapshot(photoQ, (querySnapshot) => {
+        const newArray = [];
+        querySnapshot.forEach((doc) => {
+          newArray.push({ ...doc.data(), id: doc.id });
+        });
+        if (newArray.length > 0) {
+          const lastBackgroundUrl = newArray[newArray.length - 1].backgroundURL;
+          setProfilePhoto(lastBackgroundUrl);
+        } else {
+          setProfilePhoto("");
+        }
+      }),
+      onSnapshot(statusQ, (querySnapshot) => {
+        const newArray = [];
+        querySnapshot.forEach((doc) => {
+          newArray.push({ ...doc.data(), id: doc.id });
+        });
+        setMyStatus(newArray);
+      })
+    ];
+  
+    return () => unsubscribes.forEach((unsubscribe) => unsubscribe());
+  }, [userObj]);
 
 
   return (
+    <>
+    {isLoading ? (
+      <div>로딩중...</div>
+    ) : (
     <div className="profile_wrap">
     <ProfileHeader />
 
     <div className="profile_main">
-      <section className="background">
+    <section className="background">
         <h2 className="blind">My profile background image</h2>
+      {profilePhoto && (
         <img src={profilePhoto} alt="Profile image" />
-      </section>
+      )}
+    </section>
 
         <section className="profile">
           <h2 className="blind">My profile info</h2>
           <div className="Profile_profile_img empty">
-            <img src={userObj.photoURL} alt="Profile image" />
-            <images />
+          {userObj.photoURL && (
+              <img  src={userObj.photoURL} alt="Profile image" />
+            )}
           </div>
           <div className="profile_cont">
             <span className="profile_name">{userObj.displayName}</span>
-            {/* <span className="statusMessage">{status}</span> */}
+
             {myStatus.length > 0 && (
                 <span className="statusMessage">{myStatus[myStatus.length - 1].statusMessage}</span>
               )}
@@ -95,6 +110,8 @@ const unsubscribe = onSnapshot(q,(querySnapshot) => {
       <button className="LogOut" onClick={onLogOutClick}>LogOut</button>
     </div>
   </div>
+  )}
+  </>
 );
 }
 

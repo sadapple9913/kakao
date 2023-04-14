@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Friends.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function User({images,name,id,city ,username , backImages}) {
+function User({images , name,id,city ,username , backImages }) {
 
   return (
     <li className="friend_wrap">

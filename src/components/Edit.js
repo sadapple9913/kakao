@@ -23,8 +23,10 @@ const [profilePhoto, setProfilePhoto] = useState("");
 const navigate = useNavigate();
 
 useEffect(() =>{
-  // getTweets();
-  const q = query(collection(db,"photo"),orderBy("createdAt" ,"asc"));
+  if (!userObj) return;
+  const q = query(collection(db,"photo"),
+  where("creatorId", "==", userObj.uid),
+  orderBy("createdAt" ,"asc"));
 
     const unsubscribe = onSnapshot(q,(querySnapshot) => {
       const newArray = [];
@@ -39,7 +41,7 @@ useEffect(() =>{
         setProfilePhoto(""); // 비어있는 경우 빈 문자열("")을 상태값으로 설정
       }
     });
-},[]);
+},[userObj]);
 
   const onChange = (e) =>{
     e.preventDefault();
@@ -78,7 +80,7 @@ const onPhotoSubmit = async (e) => {
     backgroundURL = await getDownloadURL(ref(storage, response.ref));  
     const docRef = await addDoc(collection(db, "photo"), {
       createdAt: Date.now(),
-      creatorId: userObj.uid, // ID of the logged in user
+      creatorId: userObj.uid, 
       backgroundURL: backgroundURL !== "" ? backgroundURL : backgroundURL
     });
     setBackground("");
@@ -147,7 +149,9 @@ const onPhotoSubmit = async (e) => {
     <div className="profile_main">
       <section className="background">
         <h2 className="blind">My profile background image</h2>
+        {profilePhoto && (
         <img src={profilePhoto} alt="background image" />
+        )}
         <from onSubmit={onPhotoSubmit} className="photoProfile" >
           <label className="photoSelect" htmlFor="attach-photofile">
           <span className="Icon_wrap">
@@ -161,8 +165,9 @@ const onPhotoSubmit = async (e) => {
       <section className="profile">
           <h2 className="blind">My profile info</h2>
           <div className="Profile_profile_img empty">
+            {userObj.photoURL && (
             <img src={userObj.photoURL} alt="Profile image" />
-            <images />
+            )}
           </div>
           </section>
 
@@ -171,7 +176,6 @@ const onPhotoSubmit = async (e) => {
             <div className="profileName_wrap_edit">
             <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder={newDisplayName}/>
             <button type="submit" className="submit_name">
-            {/* <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> */}
             done
             </button>
             </div>

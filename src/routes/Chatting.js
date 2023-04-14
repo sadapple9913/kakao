@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ChattingHeader from "../components/ChattingHeader";
 import { FaPlus, FaRegSmileBeam, FaMicrophone } from "react-icons/fa";
 import "../styles/Chatting.scss";
@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Chatting({ userObj }) {
   const location = useLocation(); //react-router-dom에서 제공하는 함수
   console.log("location ->",location);
+  const talksRef = useRef(null); // 스크롤 대상이 되는 엘리먼트 ref
 
 
   const { name, images, id, city , backImages, username} = location.state;
@@ -25,7 +26,8 @@ console.log(city);
   const[attachment ,setAttachment ] = useState("");
 
   useEffect(() =>{
-    const q = query(collection(db,"talks"), where("userName.name", "==", name), orderBy("createdAt" ,"asc"));
+    if (!name || !userObj ) return;
+    const q = query(collection(db,"talks"), where("userName.name", "==", name), where("creatorId", "==", userObj.uid) ,orderBy("createdAt" ,"asc"));
 
       const unsubscribe = onSnapshot(q,(querySnapshot) => {
         const newArray = [];
@@ -35,7 +37,7 @@ console.log(city);
         });
         setTalks(newArray);
       });
-  },[]);
+  },[name , userObj]);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -52,13 +54,13 @@ console.log(city);
         const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`); //경로지정
         const response = await uploadString(storageRef, attachment, 'data_url');
         console.log('reponse ->',response)
-        attachmentUrl = await getDownloadURL(ref(storage, response.ref));//https:
+        attachmentUrl = await getDownloadURL(ref(storage, response.ref));
       }
       const docRef = await addDoc(collection(db, "talks"), {
         text: talk,
         userName:{name},
         createdAt: Date.now(),
-        creatorId: userObj.uid, // ID of the logged in user
+        creatorId: userObj.uid, 
         attachmentUrl
       });
       console.log("Document written with ID: ", docRef.id);
@@ -89,19 +91,28 @@ console.log(city);
     setAttachment("");
   }
 
+  useEffect(() => {
+    // chats state가 변경될 때마다 스크롤을 맨 아래로 이동
+    talksRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [talks]);
+
+//  const onAddChat = (talks) => {
+//     setTalks((prevTalks) => [...prevTalks, talks]);
+//   };
+
   return (
 
     <div className="Chatting_wrap" >
       <ChattingHeader />
-      <Link to="/Chatting " state={{ images, name, id ,city , backImages }}/>
-      <div className="chatting_main">
+      <Link to="/ChatList " state={{ images, name, id ,city , backImages ,userObj}}/>
+      <div className="chatting_main" >
         <span className="date_info">{id}</span>
 
         <div className="chat_box my">
           <span className="chat">{id}</span>
           <span className="chat">Hello! This is a test message.</span>
           <span className="chat">Hello! This is a test message. </span>
-          <span className="chat_time">
+          <span className="chat_time_my">
             <span>15</span>:<span>33</span>
           </span>
         </div>
@@ -131,11 +142,7 @@ console.log(city);
                               isOwner={talk.creatorId === userObj.uid}
                               />
                           ))}
-
-                        {/* {attachmentUrl && (
-                        <img src={attachmentUrl} width="50" height="50" alt=''  />
-                        )} */}
-                        
+              <div ref={talksRef} /> {/* 스크롤 대상이 되는 엘리먼트 */}
           </div>
 
           {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false

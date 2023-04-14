@@ -10,7 +10,6 @@ function ProfileHeader() {
 
     <div className='Profile_wrap'>
     <header>
-      {/* status_bar */}
       <div className="status_bar">
         <div className="left_item">
           <FaPlane />
@@ -25,9 +24,6 @@ function ProfileHeader() {
           <span><span>100</span>%</span>
         </div>
       </div>
-      {/* //status_bar */}
-
-      {/* title_bar */}
       <div className="title_bar">
       <h1 className='blind'>Profile</h1>
         <div className="left_item">
@@ -39,7 +35,6 @@ function ProfileHeader() {
             <FaUserCog />
         </div>
       </div>
-      {/* //title_bar */}
     </header>
     </div>
   );

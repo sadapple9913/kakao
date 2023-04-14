@@ -9,18 +9,19 @@ import axios from "axios";
 
 import "../styles/Chats.scss";
 
-function Chats({name}) {
+function Chats({name , userObj}) {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
+    if (!userObj) return;
     getDatas();
-  }, []);
+  }, [userObj]);
 
   const getDatas = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
     const datas = response.data
     setDatas(datas);
-    console.log(datas); // log the updated data
+    console.log(datas);
   }
 
   const profilesImages = profiles.map((profile) => profile.images);
@@ -69,6 +70,7 @@ function Chats({name}) {
               city={profile.city}
               username={profile.username}
               backImages={profile.backImages}
+              userObj={userObj}
             />
           ))}
         </section>

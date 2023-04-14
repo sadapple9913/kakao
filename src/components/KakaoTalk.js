@@ -45,11 +45,6 @@ function KakaoTalk(props) {
     console.log(newTalkRef);
   }
 
-  // const [currentTime, setCurrentTime] = useState(new Date());
-
-  // const currentHour = currentTime.getHours();
-  // const currentMinute = currentTime.getMinutes();
-
   useEffect(() => {
     let timeStamp = createdAt;
     const options = {hour: 'numeric', minute: 'numeric'};
@@ -92,7 +87,7 @@ function KakaoTalk(props) {
             </span>
         </>
       )}
-      {/*  */}
+
 
     </div> 
   )

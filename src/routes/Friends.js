@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { collection, query, onSnapshot, orderBy, where } from "firebase/firestore";
 import {db ,auth} from '../fbase'
-import { update } from "firebase/database";
-import KakaoTalk from "../components/KakaoTalk";
-import { UpdateData } from "firebase/firestore";
-import {async} from "@firebase/util"
+// import { update } from "firebase/database";
+// import KakaoTalk from "../components/KakaoTalk";
+// import { UpdateData } from "firebase/firestore";
+// import {async} from "@firebase/util"
 
 
 function Friends({userObj}) {
@@ -113,7 +113,6 @@ console.log("newDisplayName ", newDisplayName )
       <Header />
 
       <main className="main">
-        {/* search_box */}
         <form className="search_box">
           <fieldset className="search_inner">
             <legend className="blind">검색창</legend>
@@ -126,8 +125,6 @@ console.log("newDisplayName ", newDisplayName )
             />
           </fieldset>
         </form>
-        {/* //search_box */}
-        {/* main_section */}
         <section class="main_section">
         <h2>My Profile</h2>
         <My 

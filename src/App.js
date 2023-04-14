@@ -16,6 +16,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import ChatList from "./components/ChatList";
 
+
 library.add(fas, faFontAwesome,)
 
 
@@ -57,9 +58,8 @@ function App() {
         <Route path="/MyProfile" element={<MyProfile userObj={userObj} />} />
         <Route path="/profile/:id" component={Profile} />
         <Route path="/Chatting" element={<Chatting isLoggedIn={isLoggedIn} userObj={userObj}/>} />
-        <Route path="/My" element={<My userObj={userObj} /> } />
         <Route path="/Edit" element={<Edit userObj={userObj} /> } />
-        <Route path="ChatList" element={<ChatList  userObj={userObj}/> } />
+        <Route path="/ChatList" element={<ChatList  userObj={userObj}/> } />
       </Routes>
     </BrowserRouter>
   );
