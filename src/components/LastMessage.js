@@ -5,7 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { db } from '../fbase'
 
 function LastMessage(props) {
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
   const { chatId, isOwner ,name , userObj } = props;
   const [lastTalk, setLastTalk] = useState("");
   console.log("제발제발",userObj);

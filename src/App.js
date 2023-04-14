@@ -58,6 +58,10 @@ function App() {
         <Route path="/MyProfile" element={<MyProfile userObj={userObj} />} />
         <Route path="/profile/:id" component={Profile} />
         <Route path="/Chatting" element={<Chatting isLoggedIn={isLoggedIn} userObj={userObj}/>} />
+<<<<<<< HEAD
+=======
+        {/* <Route path="/My" element={<My userObj={userObj} /> } /> */}
+>>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
         <Route path="/Edit" element={<Edit userObj={userObj} /> } />
         <Route path="/ChatList" element={<ChatList  userObj={userObj}/> } />
       </Routes>
