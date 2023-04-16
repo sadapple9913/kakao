@@ -94,18 +94,6 @@
       font-family: orbitron,sans-serif;
       font-size: 16px;
   }
-    .statusMessage_edit{
-      width: 200px;
-      background: transparent;
-      padding: 3px 0;
-      margin-left:20px;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid #333 ;
-      text-align: center;
-      font-family: orbitron,sans-serif;
-      font-size: 16px;
-    }
     .submit_name{
       position: relative;
       left: 0px;
@@ -122,10 +110,6 @@
     }
   }
 
-  .statusMessage_wrap{
-    position: relative;
-    bottom: 50px;
-  }
 
     .select{
       display: block;
@@ -201,6 +185,7 @@
         color: #fff;
         font-size: 16px;
         font-family: orbitron,sans-serif;
+        cursor: pointer;
       }
     }
 

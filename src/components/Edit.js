@@ -13,7 +13,6 @@ import StatusMessage from "./StatusMessage";
 
 function Edit({userObj}) {
 const [newDisplayName , setNewDisplayName] = useState(userObj.displayName);
-console.log(userObj);
 
 const [attachment ,setAttachment ] = useState("");
 const [background ,setBackground ] = useState("");
@@ -89,7 +88,6 @@ const onPhotoSubmit = async (e) => {
   } catch (e) {
     console.error("Error updating profile: ", e);
   }
-   // setBackground("");
 };
 
   const onFileChange = (e) =>{
@@ -116,13 +114,10 @@ const onPhotoSubmit = async (e) => {
     const {target:{files}} = e;
   
     const theFile = files[0];
-    console.log('theFile->',theFile);
   
     const reader = new FileReader(); //브라우저에 사진미리보기를 하고싶으면 FileReader를 사용해야된다
     reader.onloadend = (finishedEvent) => {
-      console.log("finishedEvent ->" ,finishedEvent);
       const {currentTarget:{result}} = finishedEvent
-      console.log('123->',result);
       setBackground(result);
     }
     reader.readAsDataURL(theFile); //theFile이라는 값을 URL로 읽어서 보이게 한다
@@ -180,7 +175,7 @@ const onPhotoSubmit = async (e) => {
       <form onSubmit={onSubmit}>  
    
             <div className="profileName_wrap_edit">
-            <input className="profileName" type="text" onChange={onChange} value={newDisplayName} placeholder={newDisplayName}/>
+            <input className="profileName" type="text" onChange={onChange}  placeholder={newDisplayName || "name"}/>
             <button type="submit" className="submit_name">
             done
             </button>
@@ -195,8 +190,8 @@ const onPhotoSubmit = async (e) => {
       </form> 
 
       <StatusMessage userObj={userObj}/>
-          
-          <button className="back_button" onClick={() => navigate(-1)}>Back</button>
+
+      <button className="back_button" onClick={() => navigate(-1)}>Back</button>
 
 
           {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false

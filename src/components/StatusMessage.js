@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addDoc, collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { db } from "../fbase";
+import "../styles/StatusMessage.scss"
 
 function StatusMessage({ userObj}) {
   const [myStatus, setMyStatus] = useState("");
@@ -44,15 +45,13 @@ function StatusMessage({ userObj}) {
 
   return (
     <form onSubmit={onStatusSubmit}>
-      <div className="profileName_wrap_edit">
-        <div className="statusMessage_wrap">
+      <div className="statusMessage_wrap">
       {myStatus.length > 0 && (
-        <input className="statusMessage_edit" type="text" onChange={onChange} value={status} placeholder={myStatus[myStatus.length - 1].statusMessage}/>
+        <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={myStatus[myStatus.length - 1].statusMessage  || "상태메세지를 입력해주세요."}/>
         )}
         <button type="submit" className="submit_name">
           done
         </button>
-        </div>
       </div>
     </form>
   );

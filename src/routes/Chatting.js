@@ -140,9 +140,9 @@ console.log(city);
                               isOwner={talk.creatorId === userObj.uid}
                               />
                           ))}
-              <div ref={talksRef} /> {/* 스크롤 대상이 되는 엘리먼트 */}
+              <div ref={talksRef} />
           </div>
-          {attachment && ( //값이 있으면 true 다, 0 null 공백문자 undefind = false
+          {attachment && (       
                           <div className="preview_box">
                             <img className="preview" src={attachment}alt='' />
                             <button className="remove" onClick={onClearAttachment}><FontAwesomeIcon icon="fa-solid fa-xmark" /></button>

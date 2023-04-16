@@ -61,7 +61,7 @@
   }
   
   .chat {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
     margin: 5px;
     padding: 10px 5px;
@@ -74,10 +74,12 @@
   .my {
     align-self: flex-end;
     align-items: flex-end;
+    width: 100%;
     max-width: 250px;
     margin-right: 10px;
     padding-bottom: 60px;
     .chat_time_my{
+
       position: relative;
       right: 260px;
       color: #888;
@@ -86,6 +88,7 @@
       position: relative;
       background: rgb(250, 132, 112);
       max-width: 280px;
+      height: 100%;
       overflow-wrap: break-word;
 
       .delelte_btn{
@@ -103,7 +106,6 @@
          left: 50%;
          transform: translateX(-50%);
         }
-
       }
       .fix_btn{
         position:absolute;
@@ -122,70 +124,21 @@
         }
       }
 
+      img{
+        position: relative;
+        width: 100%; max-width: 280px;
+        height: 100%; max-height: 280px;
+        border-radius: 20px;
+       } 
+
+      h4{
+        margin-top: 3px;
+        line-height: 1.2;
+      }
+      }
     }
  
-    .chat_time_my{
-      position: relative;
-      right: 260px;
-      color: #888;
-    }
-    .chat {
-      position: relative;
-      background: rgb(250, 132, 112);
-      max-width: 280px;
-      overflow-wrap: break-word;
-
-      .delelte_btn{
-        position:absolute;
-        left: -45px;
-        top: 5px;
-        width: 15px;
-        height: 15px;
-        font-size: 16px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        svg{
-         position: relative;
-         left: 50%;
-         transform: translateX(-50%);
-        }
-
-      }
-      .fix_btn{
-        position:absolute;
-        left: -25px;
-        top: 7px;
-        width: 15px;
-        height: 15px;
-        font-size: 12px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        svg{
-         position: relative;
-         left: 50%;
-         transform: translateX(-50%);
-        }
-      }
-
-    }
-
-    img{
-      margin-top: 10px;
-      width: 100%; max-width: 280px;
-      height: 100%; max-height: 280px;
-      border-radius: 20px;
-     } 
-
-    .chat_time {
-      position: absolute;
-      left: -40px;
-      bottom: 0px;
-      width: 50px;
-      opacity: 0.5;
-    }
-  }
+ 
   .chat_time_now {
     position: relative;
     left: -60px;
@@ -204,12 +157,15 @@
       padding: 10px 5px;
       font-family: orbitron, sans-serif;
       font-size: 16px;
+      outline: tomato;
     }
   .done{
     background: transparent;
     border: none;
     font-family: orbitron, sans-serif;
     font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
   }
  
   }
@@ -259,7 +215,7 @@
 
   
   .preview_box{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     background: rgba(0,0,0,0.8); 
@@ -281,6 +237,11 @@
       background: transparent;
       color: #fff;
       font-size: 25px;
+      cursor: pointer;
+    }
+    .remove:hover{
+      border-radius: 50%;
+      box-shadow:inset 0 0 15px #fff;
     }
   }
   /* footer */
@@ -297,11 +258,17 @@
     background: #eee;
   }
   
-  .plus_btn svg{
-    color: #000;
-    font-size: 16px;
-    margin-left: 5px;
-    margin-top: 4px;
+  .plus_btn{
+    svg{
+      color: #000;
+      font-size: 16px;
+      margin-left: 5px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+  } 
+  .Chatting_wrap .plus_btn:hover svg{
+    color: #fff;
   }
 
   form {
@@ -332,7 +299,6 @@
       position: absolute;
       left: -55px;
       width: 20px;
-
       input{
         width: 20px;
       }
@@ -346,37 +312,11 @@
       height: 31px;
       border-radius: 50%;
       background: tomato;
+      cursor: pointer;
       svg{
         font-size: 18px;
         margin-left: 9px;
         margin-top: 7px;
       }
     }
- 
-  // .text_field {
-  //   width: calc(100% - 40px);
-  //   height: 32px;
-  // }
-  
-//   .emoticon_btn {
-//     position: absolute;
-//     right: 45px;
-  
-//     a {
-//       color: #b3b4b4;
-//     }
-//   }
-  
-//   .voice_btn > a {
-//     display: block;
-//     width: 34px;
-//     height: 37px;
-//     margin-right: 5px;
-//     line-height: 37px;
-//     background: #ffe73a;
-//     color: #513736;
-//     font-size: 16px;
-//     text-align: center;
-//   }
-
 }

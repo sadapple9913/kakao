@@ -68,10 +68,11 @@ function KakaoTalk(props) {
       ) : (
         <>
         <div className='chat'>
-          <h4>{text}</h4>
         {attachmentUrl && (
-        <img src={attachmentUrl} alt=''  />
+        <img src={attachmentUrl} alt={attachmentUrl}  />
         )}
+        <h4>{text}</h4>
+    
 
 
         {isOwner && (

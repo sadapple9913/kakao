@@ -34,7 +34,9 @@ function My({userObj , images}) {
       <ul>
         <li className="friend_wrap">
           <span class="Profile_img empty">
+          {userObj.photoURL && (
             <img src={userObj.photoURL} alt="My Image"/>
+          )}
           </span>
           <span class="Profile_name">{userObj.displayName}</span>
           {myStatus.length > 0 && (
