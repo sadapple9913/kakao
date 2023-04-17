@@ -15,10 +15,7 @@ function My({userObj , images}) {
     const [myStatus, setMyStatus] = useState("");
 
     useEffect(() =>{
-<<<<<<< HEAD
       if (!userObj) return;
-=======
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
       const q = query(collection(db,"statusMessage"),
       where("creatorId", "==", userObj.uid),orderBy("createdAt" ,"asc"));
       
@@ -30,19 +27,16 @@ function My({userObj , images}) {
         });
         setMyStatus(newArray);
       });
-<<<<<<< HEAD
       },[userObj]);
-=======
-      },[]);
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
-      
 
   return (
     <Link to="/MyProfile" images={images} userObj={userObj}>
       <ul>
         <li className="friend_wrap">
           <span class="Profile_img empty">
+          {userObj.photoURL && (
             <img src={userObj.photoURL} alt="My Image"/>
+          )}
           </span>
           <span class="Profile_name">{userObj.displayName}</span>
           {myStatus.length > 0 && (

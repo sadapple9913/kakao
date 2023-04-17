@@ -15,7 +15,6 @@ function ChatList({  images, name, id , city , backImages  , userObj}) {
   
   const[nowDate , setNowDate] = useState("");
 
-<<<<<<< HEAD
   useEffect(() => {
     async function fetchData() {
       try {
@@ -42,32 +41,32 @@ function ChatList({  images, name, id , city , backImages  , userObj}) {
     }
     fetchData();
   }, [name]);
-=======
-useEffect(() => {
-  async function fetchData() {
-    try {
-      const q = query(collection(db, "talks"), where("creatorId", "==", userObj.uid), where("userName.name", "==", name));
-      const querySnapshot = await getDocs(q);
-      const docs = querySnapshot.docs;
-      if (docs.length > 0) {
-        const createdAt = docs[0].data().createdAt;
-        if (createdAt) {
-          // The user `createdAt` is the default setting.
-          const options = { hour: 'numeric', minute: 'numeric' };
-          const now = new Date(createdAt);
-          setNowDate(now.toLocaleTimeString(undefined, options));
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const q = query(
+          collection(db, "talks"),
+          where("creatorId", "==", userObj.uid),
+          where("userName.name", "==", name)
+        );
+        const querySnapshot = await getDocs(q);
+        const docs = querySnapshot.docs;
+        if (docs.length > 0) {
+          const createdAt = docs[0].data().createdAt;
+          if (createdAt) {
+            const options = { hour: 'numeric', minute: 'numeric' };
+            const now = new Date(createdAt);
+            setNowDate(now.toLocaleTimeString(undefined, options));
+          }
+        } else {
+          console.log("No documents found!");
         }
-      } else {
-        console.log("No documents found!");
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  }
-
-  fetchData();
-}, [name]);
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
+    fetchData();
+  }, [name]);
 
   return (
     <ul>

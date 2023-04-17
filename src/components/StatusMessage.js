@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { addDoc, collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { db } from "../fbase";
+import "../styles/StatusMessage.scss"
 
 function StatusMessage({ userObj}) {
   const [myStatus, setMyStatus] = useState("");
   const [status , setStatus] = useState([]);
   useEffect(() => {
-<<<<<<< HEAD
     if (!status || !userObj || !userObj.uid) return;
-=======
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
     const q = query(collection(db, "statusMessage"),
     where("creatorId", "==", userObj.uid), 
     orderBy("createdAt", "asc"));
@@ -21,11 +19,7 @@ function StatusMessage({ userObj}) {
       });
       setMyStatus(newArray);
     });
-<<<<<<< HEAD
   }, [status,userObj]);
-=======
-  }, []);
->>>>>>> 1a7ef9dc5de98dd8bf42dfab5ef3b65dafd5134d
 
   const onChange = (e) => {
     e.preventDefault();
@@ -51,15 +45,15 @@ function StatusMessage({ userObj}) {
 
   return (
     <form onSubmit={onStatusSubmit}>
-      <div className="profileName_wrap_edit">
-        <div className="statusMessage_wrap">
-      {myStatus.length > 0 && (
-        <input className="statusMessage_edit" type="text" onChange={onChange} value={status} placeholder={myStatus[myStatus.length - 1].statusMessage}/>
+      <div className="statusMessage_wrap">
+      {myStatus.length > 0 ? (
+          <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={myStatus[myStatus.length - 1].statusMessage} />
+        ) : (
+          <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={"상태메세지를 입력해주세요."} />
         )}
-        <button type="submit" className="submit_name">
+        <button type="submit" className="submit_status">
           done
         </button>
-        </div>
       </div>
     </form>
   );

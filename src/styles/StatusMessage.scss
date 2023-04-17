@@ -1,3 +1,39 @@
-.statusMessage_edit{
-  border: 1px solid #ccc;
-}
+
+  .statusMessage_wrap{
+    display: inline-block;
+    position: relative;
+    top: 70px;
+    left: 52%;
+    height: 27px;
+    transform: translateX(-52%);
+    text-align: center;
+    border-bottom: 1px solid #333 ;
+
+    .statusMessage_edit{
+      width: 100%;
+      background: transparent;
+      padding: 3px 0;
+      outline: none;
+      border: none;
+      text-align: center;
+      font-family: orbitron,sans-serif;
+      font-size: 16px;
+  }
+
+
+  }  
+  .submit_status{
+    position: relative;
+    top: -20px;
+    left: 170px;
+    background: transparent;
+    border: none;
+    font-family: orbitron,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:all 0.3s ease 0s;
+    &:hover{
+      color: #e73446;
+    }
+  }
