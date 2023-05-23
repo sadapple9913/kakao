@@ -46,10 +46,12 @@ function StatusMessage({ userObj}) {
   return (
     <form onSubmit={onStatusSubmit}>
       <div className="statusMessage_wrap">
-      {myStatus.length > 0 && (
-        <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={myStatus[myStatus.length - 1].statusMessage  || "상태메세지를 입력해주세요."}/>
+      {myStatus.length > 0 ? (
+          <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={myStatus[myStatus.length - 1].statusMessage} />
+        ) : (
+          <input className="statusMessage_edit" type="text" onChange={onChange} placeholder={"상태메세지를 입력해주세요."} />
         )}
-        <button type="submit" className="submit_name">
+        <button type="submit" className="submit_status">
           done
         </button>
       </div>

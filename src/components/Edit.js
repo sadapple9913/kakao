@@ -175,7 +175,11 @@ const onPhotoSubmit = async (e) => {
       <form onSubmit={onSubmit}>  
    
             <div className="profileName_wrap_edit">
-            <input className="profileName" type="text" onChange={onChange}  placeholder={newDisplayName || "name"}/>
+              {newDisplayName ? (
+                <input className="profileName" type="text" onChange={onChange}  placeholder={newDisplayName}/>
+              ) : (
+                <input className="profileName" type="text" onChange={onChange}  placeholder={"name"}/>
+              )}
             <button type="submit" className="submit_name">
             done
             </button>
