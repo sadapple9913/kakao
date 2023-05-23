@@ -1,0 +1,128 @@
+
+
+.background{
+  width: 100%;
+  height: 100vh;
+  background: url(https://assets.nflxext.com/ffe/siteui/vlv3/61e79073-50cf-4f7b-9a23-73290e6f7dca/3885525e-fc0d-40d0-b694-1c9d653e67fc/KR-ko-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  filter:drop-shadow(10) ;
+}
+.background::before{
+  content: "";
+  z-index: 10;
+  display: block;
+  position: fixed;
+  width: 100%;height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.logo{
+  z-index: 20;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 20%;height: 150px;
+
+  background:  url(../images/Netflix_Logo_RGB.png)no-repeat 0 0;
+  background-size: contain;
+}
+
+.login_wrap{
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50%;
+  top: calc(50% - 350px);
+  transform: translateX(-50%);
+  width: 314px;
+  min-height: 550px;
+  padding: 60px 68px 40px;
+  margin-bottom: 90px;
+  background: rgba(0,0,0,0.7);
+}
+
+
+.login__title{
+  color: #fff;
+  font-size: 32px;
+}
+
+.login{
+  width: 100%;
+  height: 100%;
+}
+
+.login>input{
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 5px;
+  border: none;
+  text-indent: 15px;
+  font-size: 16px;
+  background: #333;
+  outline: none;
+  color: #fff;
+}
+
+.login>input::placeholder{
+  color: #8c8c8c;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* transition: font .1s ease,top .1s ease,transform .1s ease; */
+}
+
+.login>input.email{
+  margin: 40px 0 20px 0;
+}
+
+.sign{
+  margin: 10px 0;
+  color: #fff;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+}
+
+.login>input.toggle{
+margin-top: 40px;
+text-align: center;
+text-indent: 0px;
+border-radius: 4px;
+font-size: 16px;
+font-weight: 500;
+padding: 13px 0;
+background: #e50914;
+color: #fff;
+cursor: pointer;
+}
+
+
+.googleLogin{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ather{
+  font-size: 12px;
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+.googleLogin>button{
+text-align: center;
+border-radius: 4px;
+font-size: 14px;
+font-weight: 500;
+background: #333;
+color: #fff;
+cursor: pointer;
+border: none;
+padding: 10px 0;
+transition: all 0.3s ease 0s;
+}
+.googleLogin>button:hover{
+  background: #e50914;
+}

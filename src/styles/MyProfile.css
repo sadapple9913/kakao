@@ -1,0 +1,60 @@
+@import '../styles/reset.css';
+
+.logo{
+  background-size: 70%;
+}
+
+.profile{
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  color: #fff;
+  text-align: center;
+}
+
+.profile>h2{
+  font-size: 52px;
+}
+
+.Profile__wrap{
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+.Profile__box{
+  display: flex;
+  flex-direction: column;
+  width: 19%;
+  height: 100%;
+  margin-top: 30px;
+}
+
+.Profile__img>img{
+  width: 100%;
+  height: 100%;
+}
+
+.Profile_name{
+  margin-top: 8px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.profile_menu{
+  position: relative;
+  top: 90px;
+}
+
+.Profile_Plus{
+  margin-top: 13px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+/* .plus__profile>span{
+  position: relative;
+  color: #fff;
+} */
